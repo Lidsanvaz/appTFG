@@ -1,0 +1,42 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.example.miapp",
+      "nativeLanguage": "es"
+    },
+    "jhipsterVersion": "6.0.1",
+    "applicationType": "monolith",
+    "baseName": "miappjhipster",
+    "packageName": "com.example.miapp",
+    "packageFolder": "com/example/miapp",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": false,
+    "websocket": false,
+    "databaseType": "mongodb",
+    "devDatabaseType": "mongodb",
+    "prodDatabaseType": "mongodb",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "NjRhZWIzYmIyNjRkNjI3NjEwYWVlYTdjYmQyNzRjNTIzN2E1ODQwYjUxM2M4NzBmOGUzOTMwZjRjNmM3ZDcwMDFlZmE2Y2EwNGEwMTcyM2UwYmYwNWFjNjk1YzgyMjMxNTNjZWNkZWE3NWQ2MjQ5MzdiNjRhYzgyMzZjNDg1MWE=",
+    "clientFramework": "angularX",
+    "clientTheme": "none",
+    "clientThemeVariant": "",
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": true,
+    "nativeLanguage": "es",
+    "languages": [
+      "es"
+    ]
+  }
+}
