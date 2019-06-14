@@ -25,7 +25,7 @@ public interface UserRepository extends MongoRepository<User, String> {
 
     Optional<User> findOneByActivationKey(String activationKey);
 
-    List<User> findAllByActivatedIsFalseAndCreatedDateBefore(Instant dateTime);
+    //List<User> findAllByActivatedIsFalseAndCreatedDateBefore(Instant dateTime);
 
     Optional<User> findOneByResetKey(String resetKey);
 

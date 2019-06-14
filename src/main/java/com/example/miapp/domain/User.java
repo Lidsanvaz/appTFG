@@ -53,7 +53,6 @@ public class User extends AbstractAuditingEntity implements Serializable {
     @Indexed
     private String email;
 
-    private boolean activated = false;
 
     @Size(min = 2, max = 6)
     @Field("lang_key")
@@ -136,13 +135,7 @@ public class User extends AbstractAuditingEntity implements Serializable {
         this.imageUrl = imageUrl;
     }
 
-    public boolean getActivated() {
-        return activated;
-    }
-
-    public void setActivated(boolean activated) {
-        this.activated = activated;
-    }
+   
 
     public String getActivationKey() {
         return activationKey;
@@ -208,7 +201,6 @@ public class User extends AbstractAuditingEntity implements Serializable {
             ", lastName='" + lastName + '\'' +
             ", email='" + email + '\'' +
             ", imageUrl='" + imageUrl + '\'' +
-            ", activated='" + activated + '\'' +
             ", langKey='" + langKey + '\'' +
             ", activationKey='" + activationKey + '\'' +
             "}";

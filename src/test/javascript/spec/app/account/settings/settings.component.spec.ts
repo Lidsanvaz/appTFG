@@ -34,7 +34,6 @@ describe('Component Tests', () => {
         firstName: 'John',
         lastName: 'Doe',
 
-        activated: true,
         email: 'john.doe@mail.com',
         langKey: 'es',
         login: 'john'

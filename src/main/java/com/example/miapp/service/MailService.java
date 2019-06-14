@@ -1,4 +1,4 @@
-package com.example.miapp.service;
+/* package com.example.miapp.service;
 
 import com.example.miapp.domain.User;
 
@@ -22,7 +22,7 @@ import org.thymeleaf.spring5.SpringTemplateEngine;
  * Service for sending emails.
  * <p>
  * We use the {@link Async} annotation to send emails asynchronously.
- */
+ 
 @Service
 public class MailService {
 
@@ -103,3 +103,4 @@ public class MailService {
         sendEmailFromTemplate(user, "mail/passwordResetEmail", "email.reset.title");
     }
 }
+ */

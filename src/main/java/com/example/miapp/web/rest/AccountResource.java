@@ -4,7 +4,7 @@ package com.example.miapp.web.rest;
 import com.example.miapp.domain.User;
 import com.example.miapp.repository.UserRepository;
 import com.example.miapp.security.SecurityUtils;
-import com.example.miapp.service.MailService;
+//import com.example.miapp.service.MailService;
 import com.example.miapp.service.UserService;
 import com.example.miapp.service.dto.PasswordChangeDTO;
 import com.example.miapp.service.dto.UserDTO;
@@ -41,13 +41,13 @@ public class AccountResource {
 
     private final UserService userService;
 
-    private final MailService mailService;
+   // private final MailService mailService;
 
-    public AccountResource(UserRepository userRepository, UserService userService, MailService mailService) {
+    public AccountResource(UserRepository userRepository, UserService userService) {
 
         this.userRepository = userRepository;
         this.userService = userService;
-        this.mailService = mailService;
+      //  this.mailService = mailService;
     }
 
     /**
@@ -65,7 +65,7 @@ public class AccountResource {
             throw new InvalidPasswordException();
         }
         User user = userService.registerUser(managedUserVM, managedUserVM.getPassword());
-        mailService.sendActivationEmail(user);
+        //mailService.sendActivationEmail(user);
     }
 
     /**
@@ -149,13 +149,13 @@ public class AccountResource {
      * @param mail the mail of the user.
      * @throws EmailNotFoundException {@code 400 (Bad Request)} if the email address is not registered.
      */
-    @PostMapping(path = "/account/reset-password/init")
+  /*   @PostMapping(path = "/account/reset-password/init")
     public void requestPasswordReset(@RequestBody String mail) {
        mailService.sendPasswordResetMail(
            userService.requestPasswordReset(mail)
                .orElseThrow(EmailNotFoundException::new)
        );
-    }
+    } */
 
     /**
      * {@code POST   /account/reset-password/finish} : Finish to reset the password of the user.

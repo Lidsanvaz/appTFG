@@ -40,7 +40,6 @@ public class InitialSetupMigration {
         systemUser.setFirstName("");
         systemUser.setLastName("System");
         systemUser.setEmail("system@localhost");
-        systemUser.setActivated(true);
         systemUser.setLangKey("es");
         systemUser.setCreatedBy(systemUser.getLogin());
         systemUser.setCreatedDate(Instant.now());
@@ -55,7 +54,6 @@ public class InitialSetupMigration {
         anonymousUser.setFirstName("Anonymous");
         anonymousUser.setLastName("User");
         anonymousUser.setEmail("anonymous@localhost");
-        anonymousUser.setActivated(true);
         anonymousUser.setLangKey("es");
         anonymousUser.setCreatedBy(systemUser.getLogin());
         anonymousUser.setCreatedDate(Instant.now());
@@ -68,7 +66,6 @@ public class InitialSetupMigration {
         adminUser.setFirstName("admin");
         adminUser.setLastName("Administrator");
         adminUser.setEmail("admin@localhost");
-        adminUser.setActivated(true);
         adminUser.setLangKey("es");
         adminUser.setCreatedBy(systemUser.getLogin());
         adminUser.setCreatedDate(Instant.now());
@@ -83,7 +80,6 @@ public class InitialSetupMigration {
         userUser.setFirstName("");
         userUser.setLastName("User");
         userUser.setEmail("user@localhost");
-        userUser.setActivated(true);
         userUser.setLangKey("es");
         userUser.setCreatedBy(systemUser.getLogin());
         userUser.setCreatedDate(Instant.now());

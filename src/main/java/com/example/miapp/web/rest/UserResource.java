@@ -4,7 +4,7 @@ import com.example.miapp.config.Constants;
 import com.example.miapp.domain.User;
 import com.example.miapp.repository.UserRepository;
 import com.example.miapp.security.AuthoritiesConstants;
-import com.example.miapp.service.MailService;
+//import com.example.miapp.service.MailService;
 import com.example.miapp.service.UserService;
 import com.example.miapp.service.dto.UserDTO;
 import com.example.miapp.web.rest.errors.BadRequestAlertException;
@@ -70,13 +70,13 @@ public class UserResource {
 
     private final UserRepository userRepository;
 
-    private final MailService mailService;
+   // private final MailService mailService;
 
-    public UserResource(UserService userService, UserRepository userRepository, MailService mailService) {
+    public UserResource(UserService userService, UserRepository userRepository) {
 
         this.userService = userService;
         this.userRepository = userRepository;
-        this.mailService = mailService;
+       // this.mailService = mailService;
     }
 
     /**
@@ -105,7 +105,7 @@ public class UserResource {
             throw new EmailAlreadyUsedException();
         } else {
             User newUser = userService.createUser(userDTO);
-            mailService.sendCreationEmail(newUser);
+            //mailService.sendCreationEmail(newUser);
             return ResponseEntity.created(new URI("/api/users/" + newUser.getLogin()))
                 .headers(HeaderUtil.createAlert(applicationName,  "userManagement.created", newUser.getLogin()))
                 .body(newUser);

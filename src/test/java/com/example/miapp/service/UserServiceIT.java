@@ -54,7 +54,6 @@ public class UserServiceIT {
         user = new User();
         user.setLogin(DEFAULT_LOGIN);
         user.setPassword(RandomStringUtils.random(60));
-        user.setActivated(true);
         user.setEmail(DEFAULT_EMAIL);
         user.setFirstName(DEFAULT_FIRSTNAME);
         user.setLastName(DEFAULT_LASTNAME);
@@ -77,7 +76,6 @@ public class UserServiceIT {
 
     @Test
     public void assertThatOnlyActivatedUserCanRequestPasswordReset() {
-        user.setActivated(false);
         userRepository.save(user);
 
         Optional<User> maybeUser = userService.requestPasswordReset(user.getLogin());
@@ -89,7 +87,6 @@ public class UserServiceIT {
     public void assertThatResetKeyMustNotBeOlderThan24Hours() {
         Instant daysAgo = Instant.now().minus(25, ChronoUnit.HOURS);
         String resetKey = RandomUtil.generateResetKey();
-        user.setActivated(true);
         user.setResetDate(daysAgo);
         user.setResetKey(resetKey);
         userRepository.save(user);
@@ -102,7 +99,6 @@ public class UserServiceIT {
     @Test
     public void assertThatResetKeyMustBeValid() {
         Instant daysAgo = Instant.now().minus(25, ChronoUnit.HOURS);
-        user.setActivated(true);
         user.setResetDate(daysAgo);
         user.setResetKey("1234");
         userRepository.save(user);
@@ -117,7 +113,6 @@ public class UserServiceIT {
         String oldPassword = user.getPassword();
         Instant daysAgo = Instant.now().minus(2, ChronoUnit.HOURS);
         String resetKey = RandomUtil.generateResetKey();
-        user.setActivated(true);
         user.setResetDate(daysAgo);
         user.setResetKey(resetKey);
         userRepository.save(user);
@@ -134,15 +129,13 @@ public class UserServiceIT {
     @Test
     public void testFindNotActivatedUsersByCreationDateBefore() {
         Instant now = Instant.now();
-        user.setActivated(false);
         User dbUser = userRepository.save(user);
         dbUser.setCreatedDate(now.minus(4, ChronoUnit.DAYS));
         userRepository.save(user);
-        List<User> users = userRepository.findAllByActivatedIsFalseAndCreatedDateBefore(now.minus(3, ChronoUnit.DAYS));
+ /*        List<User> users = userRepository.findAllByActivatedIsFalseAndCreatedDateBefore(now.minus(3, ChronoUnit.DAYS));
         assertThat(users).isNotEmpty();
-        userService.removeNotActivatedUsers();
         users = userRepository.findAllByActivatedIsFalseAndCreatedDateBefore(now.minus(3, ChronoUnit.DAYS));
-        assertThat(users).isEmpty();
+        assertThat(users).isEmpty(); */
     }
 
     @Test
@@ -162,14 +155,12 @@ public class UserServiceIT {
     @Test
     public void testRemoveNotActivatedUsers() {
 
-        user.setActivated(false);
         userRepository.save(user);
         // Let the audit first set the creation date but then update it
         user.setCreatedDate(Instant.now().minus(30, ChronoUnit.DAYS));
         userRepository.save(user);
 
         assertThat(userRepository.findOneByLogin(DEFAULT_LOGIN)).isPresent();
-        userService.removeNotActivatedUsers();
         assertThat(userRepository.findOneByLogin(DEFAULT_LOGIN)).isNotPresent();
     }
 

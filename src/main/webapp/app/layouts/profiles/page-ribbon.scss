@@ -2,7 +2,7 @@
 Developement Ribbon
 ========================================================================== */
 .ribbon {
-  background-color: rgba(170, 0, 0, 0.5);
+  background-color: rgba(170, 0, 0, 0);
   left: -3.5em;
   -moz-transform: rotate(-45deg);
   -ms-transform: rotate(-45deg);
@@ -16,7 +16,7 @@ Developement Ribbon
   width: 15em;
   z-index: 9999;
   pointer-events: none;
-  opacity: 0.75;
+  opacity: 0;
   a {
     color: #fff;
     display: block;
@@ -27,5 +27,6 @@ Developement Ribbon
     text-decoration: none;
     text-shadow: 0 0 5px #444;
     pointer-events: none;
+    opacity: 0;
   }
 }

@@ -18,7 +18,6 @@
     "firstName": "Nombre",
     "lastName": "Apellidos",
     "email": "Email",
-    "activated": "Activado",
     "deactivated": "Desactivado",
     "profiles": "Perfiles",
     "langKey": "Idioma",
