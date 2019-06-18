@@ -17,9 +17,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
-/**
- * Controller to authenticate users.
- */
+
 @RestController
 @RequestMapping("/api")
 public class UserJWTController {
@@ -48,9 +46,7 @@ public class UserJWTController {
         return new ResponseEntity<>(new JWTToken(jwt), httpHeaders, HttpStatus.OK);
     }
 
-    /**
-     * Object to return as body in JWT Authentication.
-     */
+    
     static class JWTToken {
 
         private String idToken;
@@ -68,4 +64,4 @@ public class UserJWTController {
             this.idToken = idToken;
         }
     }
-}
+} 
