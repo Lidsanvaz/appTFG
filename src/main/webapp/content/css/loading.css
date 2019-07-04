@@ -86,6 +86,8 @@
 }
 
 .app-loading {
+  background-image: url('../../content/images/fondo-rayas.png');
+
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   position: relative;
   display: flex;
@@ -129,10 +131,10 @@
 }
 .app-loading .lds-pacman > div:nth-child(1) div {
   position: absolute;
-  top: 87px;
+  top: 78px;
   left: -8px;
-  width: 58px;
-  height: 20px;
+  width: 70px;
+  height: 40px;
   background-image: url('../images/logo-calendar1.svg');
   background-size: contain;
   -webkit-animation: lds-pacman-3 1s linear infinite;

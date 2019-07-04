@@ -1,6 +1,9 @@
 /* ==========================================================================
 Main page styles
 ========================================================================== */
+.lead {
+  padding: 10em 1em;
+}
 
 .hipster {
   display: inline-block;
@@ -8,8 +11,8 @@ Main page styles
   height: 550px;
   /*   background: url('../../content/images/fondo-rayas.png');
  */ /*   background: url('../../content/images/jhipster_family_member_3.svg') no-repeat center top,
- 
-  background-size: contain;*/
+ */
+  background-size: contain;
 }
 
 /* wait autoprefixer update to allow simple generation of high pixel density media query */

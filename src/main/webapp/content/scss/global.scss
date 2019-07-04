@@ -57,9 +57,10 @@ Generic styles
 /* other generic styles */
 
 .jh-card {
-  padding: 1.5%;
-  margin-top: 20px;
+  padding: 0.5%;
+  margin-top: 0px;
   border: none;
+  position: inherit;
 }
 
 .error {
@@ -91,6 +92,8 @@ Generic styles
 
 .footer {
   border-top: 1px solid rgba(0, 0, 0, 0.125);
+  background-image: url('../images/panel-madera.png');
+  padding: 3em 1em;
 }
 
 .hand,
