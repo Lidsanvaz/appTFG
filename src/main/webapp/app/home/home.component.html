@@ -9,9 +9,18 @@
     </div> 
     <div class="col-md-9">
         <h1 class="display-4" jhiTranslate="home.title">ROUTINE PLANNER</h1>
-        <p class="lead" jhiTranslate="home.subtitle">This is your homepage</p>
 
         <div [ngSwitch]="isAuthenticated()">
+                <ul>                     
+                           <a>
+                                <span>
+                                   <fa-icon icon="user"></fa-icon>
+                                   <span id="home-logged-message" *ngIf="account" jhiTranslate="global.menu.user"
+                                   [translateValues]="{username: account.login}">"{{account.login}}" </span>
+                                              </span>
+                           </a>                      
+                    </ul>
+
             <div class="alert alert-success" *ngSwitchCase="true">
                 <span id="home-logged-message" *ngIf="account" jhiTranslate="home.logged.message"
                     [translateValues]="{username: account.login}"> You are logged in as user "{{account.login}}". </span>
@@ -28,6 +37,8 @@
                  <a class="alert-link" routerLink="register" jhiTranslate="global.messages.info.register.link">Register a new account</a>
            </div>
  -->        </div>
+        <p class="lead" jhiTranslate="home.subtitle">This is your homepage</p>
+
 
 <!--         <p jhiTranslate="home.question">
             If you have any question on JHipster:

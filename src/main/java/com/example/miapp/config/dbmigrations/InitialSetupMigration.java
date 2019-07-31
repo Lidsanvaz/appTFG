@@ -2,6 +2,7 @@ package com.example.miapp.config.dbmigrations;
 
 import com.example.miapp.domain.Authority;
 import com.example.miapp.domain.User;
+import com.example.miapp.domain.Family;
 import com.example.miapp.security.AuthoritiesConstants;
 
 import com.github.mongobee.changeset.ChangeLog;
@@ -86,4 +87,49 @@ public class InitialSetupMigration {
         userUser.getAuthorities().add(userAuthority);
         mongoTemplate.save(userUser);
     }
+
+    @ChangeSet(order = "03", author = "initiator", id = "03-addFamilies")
+    public void addFamilies(MongoTemplate mongoTemplate) {
+        Family family1 = new Family();
+        family1.setNameFamily("Name Family1");
+        Family family2 = new Family();
+        family2.setNameFamily("Name Family2");
+
+        Authority adminAuthority = new Authority();
+        adminAuthority.setName(AuthoritiesConstants.ADMIN);
+        Authority userAuthority = new Authority();
+        userAuthority.setName(AuthoritiesConstants.USER);
+
+        User systemUser = new User();
+        systemUser.setId("user-0");
+        systemUser.setLogin("system");
+        systemUser.setPassword("$2a$10$mE.qmcV0mFU5NcKh73TZx.z4ueI/.bDWbj0T1BYyqP481kGGarKLG");
+        systemUser.setFirstName("");
+        systemUser.setLastName("System");
+        systemUser.setEmail("system@localhost");
+        systemUser.setLangKey("es");
+        systemUser.setCreatedBy(systemUser.getLogin());
+        systemUser.setCreatedDate(Instant.now());
+        systemUser.getAuthorities().add(adminAuthority);
+        systemUser.getAuthorities().add(userAuthority);
+        mongoTemplate.save(systemUser);
+
+        User anonymousUser = new User();
+        anonymousUser.setId("user-1");
+        anonymousUser.setLogin("anonymoususer");
+        anonymousUser.setPassword("$2a$10$j8S5d7Sr7.8VTOYNviDPOeWX8KcYILUVJBsYV83Y5NtECayypx9lO");
+        anonymousUser.setFirstName("Anonymous");
+        anonymousUser.setLastName("User");
+        anonymousUser.setEmail("anonymous@localhost");
+        anonymousUser.setLangKey("es");
+        anonymousUser.setCreatedBy(systemUser.getLogin());
+        anonymousUser.setCreatedDate(Instant.now());
+        mongoTemplate.save(anonymousUser);
+
+
+        family1.getUsers().add(anonymousUser);
+        mongoTemplate.save(family1);
+        mongoTemplate.save(family2);
+    }
+
 }

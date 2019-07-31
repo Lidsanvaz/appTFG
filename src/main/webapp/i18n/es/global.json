@@ -3,6 +3,7 @@
     "title": "ROUTINE PLANNER",
     "browsehappy": "Está usando un navegador <strong>no actualizado</strong>. Por favor, <a href=\"http://browsehappy.com/?locale=en\">actualice su navegador</a> para mejorar su experiencia.",
     "menu": {
+      "user": "{{username}}",
       "home": "Inicio",
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
@@ -16,7 +17,8 @@
         "sessions": "Sesiones",
         "login": "Iniciar sesión",
         "logout": "Cerrar la sesión",
-        "register": "Crear una cuenta"
+        "register": "Crear un usuario",
+        "family": "Crear una unidad familiar"
       },
       "admin": {
         "main": "Administración",

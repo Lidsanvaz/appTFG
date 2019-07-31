@@ -17,3 +17,6 @@ export * from './register/register.route';
 export * from './settings/settings.component';
 export * from './settings/settings.route';
 export * from './account.route';
+export * from './family/family.service';
+export * from './family/family.component';
+export * from './family/family.route';

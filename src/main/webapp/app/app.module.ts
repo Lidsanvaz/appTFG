@@ -34,7 +34,6 @@ import { JhiMainComponent, NavbarComponent, FooterComponent, PageRibbonComponent
     }),
     MiappjhipsterSharedModule.forRoot(),
     MiappjhipsterCoreModule,
-    MiappjhipsterHomeModule,
     MiappjhipsterAccountModule,
     // jhipster-needle-angular-add-module JHipster will add new module here
     MiappjhipsterEntityModule,
