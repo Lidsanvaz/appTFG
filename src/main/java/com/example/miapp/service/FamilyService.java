@@ -45,14 +45,14 @@ public class FamilyService {
     public Family createFamily(FamilyDTO familyDTO) {
         Family family = new Family();
         family.setNameFamily(familyDTO.getNameFamily());
-        if (familyDTO.getUsers() != null) {
+/*         if (familyDTO.getUsers() != null) {
             Set<User> users = familyDTO.getUsers().stream()
                 .map(userRepository::findById)
                 .filter(Optional::isPresent)
                 .map(Optional::get)
                 .collect(Collectors.toSet());
             family.setUsers(users);
-        }
+        } */
         familyRepository.save(family);
 /*         log.debug("Created Information for User: {}", family);
  */        return family;
@@ -128,8 +128,8 @@ public class FamilyService {
     }
 
     
- /*    public Page<FamilyDTO> getAllManagedFamilies(Pageable pageable) {
+ /*     public Page<FamilyDTO> getAllManagedFamilies(Pageable pageable) {
         return familyRepository.findAllFamilies(pageable).map(FamilyDTO::new);
-    } */
+    }  */
 
 }

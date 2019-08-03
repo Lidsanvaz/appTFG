@@ -6,7 +6,7 @@ import { MiappjhipsterSharedModule } from 'app/shared';
 import {
   PasswordStrengthBarComponent,
   RegisterComponent,
-  FamilyComponent,
+  CreateComponent,
   ActivateComponent,
   PasswordComponent,
   PasswordResetInitComponent,
@@ -20,7 +20,7 @@ import {
   declarations: [
     ActivateComponent,
     RegisterComponent,
-    FamilyComponent,
+    CreateComponent,
     PasswordComponent,
     PasswordStrengthBarComponent,
     PasswordResetInitComponent,

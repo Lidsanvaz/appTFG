@@ -2,12 +2,15 @@ package com.example.miapp.web.rest;
 
 
 import com.example.miapp.domain.User;
+import com.example.miapp.domain.Family;
 import com.example.miapp.repository.UserRepository;
 import com.example.miapp.security.SecurityUtils;
 //import com.example.miapp.service.MailService;
 import com.example.miapp.service.UserService;
+import com.example.miapp.service.FamilyService;
 import com.example.miapp.service.dto.PasswordChangeDTO;
 import com.example.miapp.service.dto.UserDTO;
+import com.example.miapp.service.dto.FamilyDTO;
 import com.example.miapp.web.rest.errors.*;
 import com.example.miapp.web.rest.vm.KeyAndPasswordVM;
 import com.example.miapp.web.rest.vm.ManagedUserVM;
@@ -40,14 +43,18 @@ public class AccountResource {
     private final UserRepository userRepository;
 
     private final UserService userService;
+    
+    private final FamilyService familyService;
+
+
 
    // private final MailService mailService;
 
-    public AccountResource(UserRepository userRepository, UserService userService) {
+    public AccountResource(UserRepository userRepository, UserService userService, FamilyService familyService) {
 
         this.userRepository = userRepository;
         this.userService = userService;
-      //  this.mailService = mailService;
+        this.familyService = familyService;
     }
 
     /**
@@ -67,6 +74,17 @@ public class AccountResource {
         User user = userService.registerUser(managedUserVM, managedUserVM.getPassword());
         //mailService.sendActivationEmail(user);
     }
+
+
+
+     @PostMapping("/create")
+    @ResponseStatus(HttpStatus.CREATED)
+    public void createFamily(@Valid @RequestBody FamilyDTO familyDTO) {
+         Family family = familyService.createFamily(familyDTO);
+    
+
+    } 
+
 
     /**
      * {@code GET  /activate} : activate the registered user.

@@ -1,0 +1,58 @@
+<div>
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <h1 jhiTranslate="create.title">Create</h1>
+    
+                 <div class="alert alert-success" *ngIf="success" jhiTranslate="create.messages.success">
+                    <strong>Registration saved!</strong>
+                </div>
+    
+                <div class="alert alert-danger" *ngIf="error" jhiTranslate="create.messages.error.fail">
+                    <strong>Registration failed!</strong> Please try again later.
+                </div>
+    
+                <div class="alert alert-danger" *ngIf="errorUserExists" jhiTranslate="create.messages.error.userexists">
+                    <strong>Login name already registered!</strong> Please choose another one.
+                </div>
+    
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <form name="form" role="form" (ngSubmit)="create()" [formGroup]="createForm" *ngIf="!success">
+                    
+                    <div class="form-group">
+                        <label class="form-control-label" for="nameFamily" jhiTranslate="global.form.nameFamily.label">Name Family</label>
+                        <input type="nameFamily" class="form-control" id="nameFamily" name="nameFamily" placeholder="{{'global.form.nameFamily.placeholder' | translate}}"
+                                 formControlName="nameFamily">
+                        <div *ngIf="createForm.get('nameFamily').invalid && (createForm.get('nameFamily').dirty || createForm.get('nameFamily').touched)">
+                            <small class="form-text text-danger" *ngIf="createForm.get('nameFamily').errors.required"
+                                    jhiTranslate="global.messages.validate.nameFamily.required">
+                                Your name family is required.
+                            </small>
+                            <small class="form-text text-danger" *ngIf="createForm.get('nameFamily').errors.invalid"
+                                   jhiTranslate="global.messages.validate.nameFamily.invalid">
+                                Your name family is invalid.
+                            </small>
+                            <small class="form-text text-danger" *ngIf="createForm.get('nameFamily').errors.minlength"
+                                   jhiTranslate="global.messages.validate.nameFamily.minlength">
+                                Your name family is required to be at least 5 characters.
+                            </small>
+                            <small class="form-text text-danger" *ngIf="createForm.get('nameFamily').errors.maxlength"
+                                   jhiTranslate="global.messages.validate.nameFamily.maxlength">
+                                Your name family cannot be longer than 100 characters.
+                            </small>
+                        </div>
+                    </div>
+    
+                    <button type="submit" [disabled]="createForm.invalid" class="btn btn-primary" jhiTranslate="create.form.button">Create</button>
+                </form>
+                <p></p>
+                <div class="alert alert-warning">
+                    <span jhiTranslate="global.messages.info.authenticated.prefix">If you want to </span>
+                    <a class="alert-link" (click)="openLogin()" jhiTranslate="global.messages.info.authenticated.link">sign in</a><span jhiTranslate="global.messages.info.authenticated.suffix">, you can try the default accounts:<br/>- Administrator (login="admin" and password="admin") <br/>- User (login="user" and password="user").</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    

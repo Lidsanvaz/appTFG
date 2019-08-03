@@ -336,7 +336,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <arguments>
-                    <argument>spring.profiles.active=prod,no-liquibase</argument>
+                    <argument>--spring.profiles.active=prod,no-liquibase</argument>
                 </arguments>
                 <executions>
                     <execution>

@@ -19,6 +19,6 @@ import java.time.Instant;
 @Repository
 public interface FamilyRepository extends MongoRepository<Family, String> {
 
-/*     Page<Family> findAllFamilies(Pageable pageable);
- */
+/*      Page<Family> findAllFamilies(Pageable pageable);
+ */ 
 }

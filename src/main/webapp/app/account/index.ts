@@ -1,6 +1,9 @@
 export * from './activate/activate.component';
 export * from './activate/activate.service';
 export * from './activate/activate.route';
+export * from './create/create.component';
+export * from './create/create.service';
+export * from './create/create.route';
 export * from './password/password.component';
 export * from './password/password-strength-bar.component';
 export * from './password/password.service';
@@ -17,6 +20,3 @@ export * from './register/register.route';
 export * from './settings/settings.component';
 export * from './settings/settings.route';
 export * from './account.route';
-export * from './family/family.service';
-export * from './family/family.component';
-export * from './family/family.route';

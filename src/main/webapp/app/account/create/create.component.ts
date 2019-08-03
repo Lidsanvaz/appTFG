@@ -6,12 +6,13 @@ import { JhiLanguageService } from 'ng-jhipster';
 
 import { EMAIL_ALREADY_USED_TYPE, LOGIN_ALREADY_USED_TYPE } from 'app/shared';
 import { LoginModalService } from 'app/core';
-import { FamilyService } from 'app/account';
+import { Create } from './create.service';
+
 @Component({
-  selector: 'jhi-family',
-  templateUrl: './family.component.html'
+  selector: 'jhi-create',
+  templateUrl: './create.component.html'
 })
-export class FamilyComponent implements OnInit, AfterViewInit {
+export class CreateComponent {
   doNotMatch: string;
   error: string;
   errorEmailExists: string;
@@ -19,15 +20,14 @@ export class FamilyComponent implements OnInit, AfterViewInit {
   success: boolean;
   modalRef: NgbModalRef;
 
-  familyForm = this.fb.group({
-    nameFamily: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(50), Validators.pattern('^[_.@A-Za-z0-9-]*$')]],
-    users: [[]]
+  createForm = this.fb.group({
+    nameFamily: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(254)]]
   });
 
   constructor(
     private languageService: JhiLanguageService,
     private loginModalService: LoginModalService,
-    private familyService: FamilyService,
+    private createService: Create,
     private elementRef: ElementRef,
     private renderer: Renderer,
     private fb: FormBuilder
@@ -41,19 +41,22 @@ export class FamilyComponent implements OnInit, AfterViewInit {
     this.renderer.invokeElementMethod(this.elementRef.nativeElement.querySelector('#login'), 'focus', []);
   }
 
-  save() {
-    let registerFamily = {};
-    const nameFamily = this.familyForm.get(['nameFamily']).value;
-    registerFamily = { ...registerFamily, nameFamily };
-    this.languageService.getCurrent().then(langKey => {
-      registerFamily = { ...registerFamily, langKey };
-      this.familyService.save(registerFamily).subscribe(
-        () => {
-          this.success = true;
-        },
-        response => this.processError(response)
-      );
-    });
+  create() {
+    let registerAccount = {};
+    const nameFamily = this.createForm.get(['nameFamily']).value;
+
+    registerAccount = { ...registerAccount, nameFamily };
+    this.doNotMatch = null;
+    this.error = null;
+    this.errorUserExists = null;
+    this.errorEmailExists = null;
+
+    this.createService.save(registerAccount).subscribe(
+      () => {
+        this.success = true;
+      },
+      response => this.processError(response)
+    );
   }
 
   openLogin() {
@@ -69,21 +72,5 @@ export class FamilyComponent implements OnInit, AfterViewInit {
     } else {
       this.error = 'ERROR';
     }
-  }
-
-  private familyFromForm(): any {
-    const family = {};
-    return {
-      ...family,
-      nameFamily: this.familyForm.get('nameFamily').value,
-      users: this.familyForm.get('users').value
-    };
-  }
-
-  updateForm(family: any): void {
-    this.familyForm.patchValue({
-      nameFamily: family.nameFamily,
-      users: family.users
-    });
   }
 }

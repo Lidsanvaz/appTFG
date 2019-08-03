@@ -64,7 +64,7 @@ public class FamilyResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      * @throws BadRequestAlertException {@code 400 (Bad Request)} if the login or email is already in use.
      */
-    @PostMapping("/families")
+    @PostMapping("/family")
     public ResponseEntity<Family> createFamily(@Valid @RequestBody FamilyDTO familyDTO) throws URISyntaxException {
         log.debug("REST request to save Family : {}", familyDTO);
 
@@ -73,7 +73,7 @@ public class FamilyResource {
             // Lowercase the user login before comparing with database
           } else {
             Family newFamily = familyService.createFamily(familyDTO);
-            return ResponseEntity.created(new URI("/api/families/" + newFamily.getNameFamily()))
+            return ResponseEntity.created(new URI("/api/family/" + newFamily.getNameFamily()))
                 .headers(HeaderUtil.createAlert(applicationName,  "userManagement.created", newFamily.getNameFamily()))
                 .body(newFamily);
         }
@@ -87,23 +87,23 @@ public class FamilyResource {
      * @param pageable the pagination information.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body all users.
      */
- /*    @GetMapping("/families")
+ /*     @GetMapping("/family")
     public ResponseEntity<List<FamilyDTO>> getAllFamilies(@RequestParam MultiValueMap<String, String> queryParams, UriComponentsBuilder uriBuilder, Pageable pageable) {
         final Page<FamilyDTO> page = familyService.getAllManagedFamilies(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(uriBuilder.queryParams(queryParams), page);
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
-    }
- */
+    } */
+ 
     /**
      * Gets a list of all roles.
      * @return a string list of all roles.
      */
-    @GetMapping("/families/users")
+ /*    @GetMapping("/families/users")
     @PreAuthorize("hasRole(\"" + AuthoritiesConstants.ADMIN + "\")")
     public List<String> getUsers() {
         return familyService.getUsers();
     }
-
+ */
     
 
     /**

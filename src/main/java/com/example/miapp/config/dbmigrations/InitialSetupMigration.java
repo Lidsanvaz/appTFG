@@ -2,7 +2,6 @@ package com.example.miapp.config.dbmigrations;
 
 import com.example.miapp.domain.Authority;
 import com.example.miapp.domain.User;
-import com.example.miapp.domain.Family;
 import com.example.miapp.security.AuthoritiesConstants;
 
 import com.github.mongobee.changeset.ChangeLog;
@@ -88,7 +87,7 @@ public class InitialSetupMigration {
         mongoTemplate.save(userUser);
     }
 
-    @ChangeSet(order = "03", author = "initiator", id = "03-addFamilies")
+ /*    @ChangeSet(order = "03", author = "initiator", id = "03-addFamilies")
     public void addFamilies(MongoTemplate mongoTemplate) {
         Family family1 = new Family();
         family1.setNameFamily("Name Family1");
@@ -130,6 +129,6 @@ public class InitialSetupMigration {
         family1.getUsers().add(anonymousUser);
         mongoTemplate.save(family1);
         mongoTemplate.save(family2);
-    }
+    } */
 
 }

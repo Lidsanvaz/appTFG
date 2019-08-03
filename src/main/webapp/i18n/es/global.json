@@ -45,7 +45,9 @@
       "confirmpassword.label": "Confirmación de la nueva contraseña",
       "confirmpassword.placeholder": "Confirmación de la nueva contraseña",
       "email.label": "Correo electrónico",
-      "email.placeholder": "Su correo electrónico"
+      "email.placeholder": "Su correo electrónico",
+      "nameFamily.label": "Nombre de la familia",
+      "nameFamily.placeholder": "Nombre de familia"
     },
     "messages": {
       "info": {
@@ -79,6 +81,12 @@
           "invalid": "Su correo electrónico no es válido.",
           "minlength": "Se requiere que su correo electrónico tenga por lo menos 5 caracteres",
           "maxlength": "Su correo electrónico no puede tener más de 50 caracteres"
+        },
+        "nameFamily": {
+          "required": "Se requiere un nombre de familia.",
+          "invalid": "El nombre de familia no es válido.",
+          "minlength": "Se requiere que el nombre tenga por lo menos 5 caracteres",
+          "maxlength": "El nombre de la familia no puede tener más de 50 caracteres"
         }
       }
     },
