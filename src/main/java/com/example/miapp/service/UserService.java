@@ -3,7 +3,9 @@ package com.example.miapp.service;
 import com.example.miapp.config.Constants;
 import com.example.miapp.domain.Authority;
 import com.example.miapp.domain.User;
+import com.example.miapp.domain.Family;
 import com.example.miapp.repository.AuthorityRepository;
+import com.example.miapp.repository.FamilyRepository;
 import com.example.miapp.repository.UserRepository;
 import com.example.miapp.security.AuthoritiesConstants;
 import com.example.miapp.security.SecurityUtils;
@@ -41,11 +43,15 @@ public class UserService {
 
     private final CacheManager cacheManager;
 
-    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, AuthorityRepository authorityRepository, CacheManager cacheManager) {
+    private final FamilyRepository familyRepository;
+
+
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, AuthorityRepository authorityRepository, CacheManager cacheManager, FamilyRepository familyRepository) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.authorityRepository = authorityRepository;
         this.cacheManager = cacheManager;
+        this.familyRepository = familyRepository;
     }
 
     public Optional<User> activateRegistration(String key) {
@@ -108,6 +114,14 @@ public class UserService {
         Set<Authority> authorities = new HashSet<>();
         authorityRepository.findById(AuthoritiesConstants.USER).ifPresent(authorities::add);
         newUser.setAuthorities(authorities);
+        if (userDTO.getFamilies() != null) {
+            Set<Family> families = userDTO.getFamilies().stream()
+                .map(familyRepository::findById)
+                .filter(Optional::isPresent)
+                .map(Optional::get)
+                .collect(Collectors.toSet());
+            newUser.setFamilies(families);
+        }
         userRepository.save(newUser);
         this.clearUserCaches(newUser);
         log.debug("Created Information for User: {}", newUser);
@@ -278,5 +292,9 @@ public class UserService {
     private void clearUserCaches(User user) {
         Objects.requireNonNull(cacheManager.getCache(UserRepository.USERS_BY_LOGIN_CACHE)).evict(user.getLogin());
         Objects.requireNonNull(cacheManager.getCache(UserRepository.USERS_BY_EMAIL_CACHE)).evict(user.getEmail());
+    }
+
+        public List<String> getFamilies() {
+        return familyRepository.findAll().stream().map(Family::getNameFamily).collect(Collectors.toList());
     }
 }

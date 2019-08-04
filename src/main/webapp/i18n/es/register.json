@@ -1,6 +1,7 @@
 {
   "register": {
     "title": "Registro",
+    "families": "Unidad familiar",
     "form": {
       "button": "Crear la cuenta"
     },

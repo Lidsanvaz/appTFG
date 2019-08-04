@@ -15,7 +15,6 @@ import java.util.stream.Collectors;
  */
 public class FamilyDTO {
 
-    private String id;
 
 
     @Size(max = 50)
@@ -40,13 +39,7 @@ public class FamilyDTO {
         this.users = users;
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
+   
 
 
     public FamilyDTO() {
@@ -54,7 +47,6 @@ public class FamilyDTO {
     }
 
     public FamilyDTO(Family family) {
-        this.id = family.getId();
         this.nameFamily = family.getNameFamily();
         this.users = family.getUsers().stream()
         .map(User::getLogin)

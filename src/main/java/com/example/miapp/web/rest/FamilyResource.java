@@ -68,15 +68,15 @@ public class FamilyResource {
     public ResponseEntity<Family> createFamily(@Valid @RequestBody FamilyDTO familyDTO) throws URISyntaxException {
         log.debug("REST request to save Family : {}", familyDTO);
 
-        if (familyDTO.getId() != null) {
+   /*      if (familyDTO.getId() != null) {
             throw new BadRequestAlertException("A new family cannot already have an ID", "userManagement", "idexists");
             // Lowercase the user login before comparing with database
-          } else {
+          } else { */
             Family newFamily = familyService.createFamily(familyDTO);
             return ResponseEntity.created(new URI("/api/family/" + newFamily.getNameFamily()))
                 .headers(HeaderUtil.createAlert(applicationName,  "userManagement.created", newFamily.getNameFamily()))
                 .body(newFamily);
-        }
+        
     }
 
  

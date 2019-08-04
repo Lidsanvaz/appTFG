@@ -43,7 +43,6 @@ public class FamilyMapper {
             return null;
         } else {
             Family family = new Family();
-            family.setId(familyDTO.getId());
             family.setNameFamily(familyDTO.getNameFamily());
             Set<User> users = this.usersFromStrings(familyDTO.getUsers());
             family.setUsers(users);
@@ -66,13 +65,13 @@ public class FamilyMapper {
         return users;
     }
 
-    public Family familyFromId(String id) {
+ /*    public Family familyFromId(String id) {
         if (id == null) {
             return null;
         }
         Family family = new Family();
         family.setId(id);
         return family;
-    }
+    } */
    
 }

@@ -5,7 +5,7 @@ import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { JhiLanguageService } from 'ng-jhipster';
 
 import { EMAIL_ALREADY_USED_TYPE, LOGIN_ALREADY_USED_TYPE } from 'app/shared';
-import { LoginModalService } from 'app/core';
+import { LoginModalService, FamilyService, UserService } from 'app/core';
 import { Register } from './register.service';
 
 @Component({
@@ -19,18 +19,22 @@ export class RegisterComponent implements OnInit, AfterViewInit {
   errorUserExists: string;
   success: boolean;
   modalRef: NgbModalRef;
+  families: any[];
 
   registerForm = this.fb.group({
     login: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(50), Validators.pattern('^[_.@A-Za-z0-9-]*$')]],
     email: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(254), Validators.email]],
     password: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(50)]],
-    confirmPassword: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(50)]]
+    confirmPassword: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(50)]],
+    families: []
   });
 
   constructor(
     private languageService: JhiLanguageService,
     private loginModalService: LoginModalService,
     private registerService: Register,
+    private familyService: FamilyService,
+    private userService: UserService,
     private elementRef: ElementRef,
     private renderer: Renderer,
     private fb: FormBuilder
@@ -38,6 +42,10 @@ export class RegisterComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.success = false;
+    this.families = [];
+    this.userService.families().subscribe(families => {
+      this.families = families;
+    });
   }
 
   ngAfterViewInit() {
@@ -52,7 +60,9 @@ export class RegisterComponent implements OnInit, AfterViewInit {
     if (password !== this.registerForm.get(['confirmPassword']).value) {
       this.doNotMatch = 'ERROR';
     } else {
-      registerAccount = { ...registerAccount, login, email, password };
+      const families = this.registerForm.get(['families']).value;
+
+      registerAccount = { ...registerAccount, login, email, password, families };
       this.doNotMatch = null;
       this.error = null;
       this.errorUserExists = null;

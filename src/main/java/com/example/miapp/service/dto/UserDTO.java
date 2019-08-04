@@ -4,6 +4,7 @@ import com.example.miapp.config.Constants;
 
 import com.example.miapp.domain.Authority;
 import com.example.miapp.domain.User;
+import com.example.miapp.domain.Family;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -52,6 +53,9 @@ public class UserDTO {
 
     private Set<String> authorities;
 
+    private Set<String> families;
+
+
     public UserDTO() {
         // Empty constructor needed for Jackson.
     }
@@ -70,6 +74,9 @@ public class UserDTO {
         this.lastModifiedDate = user.getLastModifiedDate();
         this.authorities = user.getAuthorities().stream()
             .map(Authority::getName)
+            .collect(Collectors.toSet());
+        this.families = user.getFamilies().stream()
+            .map(Family::getNameFamily)
             .collect(Collectors.toSet());
     }
 
@@ -170,6 +177,15 @@ public class UserDTO {
     public void setAuthorities(Set<String> authorities) {
         this.authorities = authorities;
     }
+
+    public Set<String> getFamilies() {
+        return families;
+    }
+
+    public void setFamilies(Set<String> families) {
+        this.families = families;
+    }
+
 
     @Override
     public String toString() {

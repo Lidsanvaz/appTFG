@@ -161,6 +161,12 @@ public class UserResource {
         return userService.getAuthorities();
     }
 
+    @GetMapping("/users/family")
+    public List<String> getFamilies() {
+        return userService.getFamilies();
+    }
+
+
     /**
      * {@code GET /users/:login} : get the "login" user.
      *

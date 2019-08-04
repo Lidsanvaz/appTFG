@@ -2,6 +2,7 @@ package com.example.miapp.service.mapper;
 
 import com.example.miapp.domain.Authority;
 import com.example.miapp.domain.User;
+import com.example.miapp.domain.Family;
 import com.example.miapp.service.dto.UserDTO;
 
 import org.springframework.stereotype.Service;
@@ -50,6 +51,8 @@ public class UserMapper {
             user.setLangKey(userDTO.getLangKey());
             Set<Authority> authorities = this.authoritiesFromStrings(userDTO.getAuthorities());
             user.setAuthorities(authorities);
+            Set<Family> families = this.familiesFromStrings(userDTO.getFamilies());
+            user.setFamilies(families);
             return user;
         }
     }
@@ -67,6 +70,21 @@ public class UserMapper {
         }
 
         return authorities;
+    }
+
+
+    private Set<Family> familiesFromStrings(Set<String> familiesAsString) {
+        Set<Family> families = new HashSet<>();
+
+        if(familiesAsString != null){
+            families = familiesAsString.stream().map(string -> {
+                Family fam = new Family();
+                fam.setNameFamily(string);
+                return fam;
+            }).collect(Collectors.toSet());
+        }
+
+        return families;
     }
 
     public User userFromId(String id) {

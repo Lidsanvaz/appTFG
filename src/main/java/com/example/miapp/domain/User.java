@@ -78,17 +78,19 @@ public class User extends AbstractAuditingEntity implements Serializable {
     @JsonIgnore
     private Set<Authority> authorities = new HashSet<>();
 
-    /* @JsonIgnore
-    private Family family;
+    @JsonIgnore
+    private Set<Family> families = new HashSet<>();
 
-    public Family getFamily() {
-        return family;
+    public Set<Family> getFamilies() {
+        return families;
     }
 
-    public void setFamily(Family family) {
-        this.family = family;
+    public void setFamilies(Set<Family> families) {
+        this.families = families;
     }
- */
+
+   
+ 
     public String getId() {
         return id;
     }

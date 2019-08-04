@@ -22,23 +22,14 @@ import java.util.Set;
 public class Family implements Serializable {
     private static final long serialVersionUID = 1L;
 
+   
     @Id
-    private String id;
-
     @Size(max = 50)
     @Field("nameFamily")
     private String nameFamily;
 
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-
+  
 
     public String getNameFamily() {
         return nameFamily;
@@ -48,7 +39,7 @@ public class Family implements Serializable {
         this.nameFamily = nameFamily;
     }
 
-    @JsonIgnore
+     @JsonIgnore
     private Set<User> users = new HashSet<>();
 
 
@@ -58,6 +49,6 @@ public class Family implements Serializable {
 
     public void setUsers(Set<User> users) {
         this.users = users;
-    }
+    } 
 
 }
