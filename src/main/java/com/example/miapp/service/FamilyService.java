@@ -1,27 +1,10 @@
 package com.example.miapp.service;
-
-import com.example.miapp.config.Constants;
 import com.example.miapp.domain.Family;
 import com.example.miapp.domain.User;
 import com.example.miapp.repository.FamilyRepository;
 import com.example.miapp.repository.UserRepository;
-import com.example.miapp.security.AuthoritiesConstants;
-import com.example.miapp.security.SecurityUtils;
 import com.example.miapp.service.dto.FamilyDTO;
-import com.example.miapp.service.util.RandomUtil;
-import com.example.miapp.web.rest.errors.*;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.cache.CacheManager;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import java.time.Instant;
-import java.time.temporal.ChronoUnit;
 import java.util.*;
 import java.util.stream.Collectors;
 

@@ -1,6 +1,4 @@
 package com.example.miapp.service.mapper;
-
-import com.example.miapp.domain.Authority;
 import com.example.miapp.domain.Family;
 import com.example.miapp.domain.User;
 

@@ -18,7 +18,10 @@
         "login": "Iniciar sesión",
         "logout": "Cerrar la sesión",
         "register": "Crear un usuario",
-        "family": "Crear una unidad familiar"
+        "family": "Crear una unidad familiar",
+        "user": "Añadir datos al usuario",
+        "addUserChild": "Añadir niños",
+        "userChild": "Completar perfil"
       },
       "admin": {
         "main": "Administración",
@@ -47,7 +50,11 @@
       "email.label": "Correo electrónico",
       "email.placeholder": "Su correo electrónico",
       "nameFamily.label": "Nombre de la familia",
-      "nameFamily.placeholder": "Nombre de familia"
+      "nameFamily.placeholder": "Nombre de familia",
+      "nameUserChild.label": "Nombre del niño",
+      "nameUserChild.placeholder": "Nombre del niño",
+      "bornDate.label": "Fecha de nacimiento",
+      "bornDate.placeholder": "Fecha de nacimiento"
     },
     "messages": {
       "info": {
@@ -87,6 +94,12 @@
           "invalid": "El nombre de familia no es válido.",
           "minlength": "Se requiere que el nombre tenga por lo menos 5 caracteres",
           "maxlength": "El nombre de la familia no puede tener más de 50 caracteres"
+        },
+        "nameUserChild": {
+          "required": "Se requiere un nombre.",
+          "invalid": "El nombre del niño no es válido.",
+          "minlength": "Se requiere que el nombre tenga por lo menos 5 caracteres",
+          "maxlength": "El nombre del niño no puede tener más de 50 caracteres"
         }
       }
     },

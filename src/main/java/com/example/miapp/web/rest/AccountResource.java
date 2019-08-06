@@ -3,13 +3,18 @@ package com.example.miapp.web.rest;
 
 import com.example.miapp.domain.User;
 import com.example.miapp.domain.Family;
+import com.example.miapp.domain.UserChild;
 import com.example.miapp.repository.UserRepository;
 import com.example.miapp.security.SecurityUtils;
 //import com.example.miapp.service.MailService;
+import com.example.miapp.security.AuthoritiesConstants;
+import org.springframework.security.access.prepost.PreAuthorize;
 import com.example.miapp.service.UserService;
 import com.example.miapp.service.FamilyService;
+import com.example.miapp.service.UserChildService;
 import com.example.miapp.service.dto.PasswordChangeDTO;
 import com.example.miapp.service.dto.UserDTO;
+import com.example.miapp.service.dto.UserChildDTO;
 import com.example.miapp.service.dto.FamilyDTO;
 import com.example.miapp.web.rest.errors.*;
 import com.example.miapp.web.rest.vm.KeyAndPasswordVM;
@@ -46,15 +51,18 @@ public class AccountResource {
     
     private final FamilyService familyService;
 
+    private final UserChildService userChildService;
+
 
 
    // private final MailService mailService;
 
-    public AccountResource(UserRepository userRepository, UserService userService, FamilyService familyService) {
+    public AccountResource(UserRepository userRepository, UserService userService, FamilyService familyService, UserChildService userChildService) {
 
         this.userRepository = userRepository;
         this.userService = userService;
         this.familyService = familyService;
+        this.userChildService = userChildService;
     }
 
     /**
@@ -85,6 +93,15 @@ public class AccountResource {
 
     } 
 
+
+    @PostMapping("/addUserChild")
+    @ResponseStatus(HttpStatus.CREATED)
+    @PreAuthorize("hasRole(\"" + AuthoritiesConstants.USER + "\")")
+    public void createUserChild(@Valid @RequestBody UserChildDTO userChildDTO) {
+         UserChild userChild = userChildService.createUserChild(userChildDTO);
+    
+
+    } 
 
     /**
      * {@code GET  /activate} : activate the registered user.
