@@ -12,7 +12,7 @@ import { Create } from './create.service';
   selector: 'jhi-create',
   templateUrl: './create.component.html'
 })
-export class CreateComponent {
+export class CreateComponent implements OnInit, AfterViewInit {
   doNotMatch: string;
   error: string;
   errorEmailExists: string;

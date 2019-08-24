@@ -5,6 +5,7 @@ import com.example.miapp.config.Constants;
 import com.example.miapp.domain.Authority;
 import com.example.miapp.domain.User;
 import com.example.miapp.domain.Family;
+import com.example.miapp.domain.UserChild;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -55,6 +56,8 @@ public class UserDTO {
 
     private Set<String> families;
 
+    private Set<String> userChilds;
+
 
     public UserDTO() {
         // Empty constructor needed for Jackson.
@@ -77,6 +80,9 @@ public class UserDTO {
             .collect(Collectors.toSet());
         this.families = user.getFamilies().stream()
             .map(Family::getNameFamily)
+            .collect(Collectors.toSet());
+        this.userChilds = user.getUserChilds().stream()
+            .map(UserChild::getNameUserChild)
             .collect(Collectors.toSet());
     }
 
@@ -184,6 +190,14 @@ public class UserDTO {
 
     public void setFamilies(Set<String> families) {
         this.families = families;
+    }
+
+    public Set<String> getUserChilds() {
+        return userChilds;
+    }
+
+    public void setUserChilds(Set<String> userChilds) {
+        this.userChilds = userChilds;
     }
 
 

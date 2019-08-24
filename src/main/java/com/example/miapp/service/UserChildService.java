@@ -4,6 +4,11 @@ import com.example.miapp.repository.UserChildRepository;
 import com.example.miapp.repository.UserRepository;
 import com.example.miapp.service.dto.UserChildDTO;
 import org.springframework.stereotype.Service;
+import com.example.miapp.security.SecurityUtils;
+import java.util.*;
+
+
+
 
 
 /**
@@ -28,14 +33,15 @@ public class UserChildService {
         userChild.setNameUserChild(userChildDTO.getNameUserChild());
         userChild.setBornDate(userChildDTO.getBornDate());
 
-/*         if (familyDTO.getUsers() != null) {
-            Set<User> users = familyDTO.getUsers().stream()
-                .map(userRepository::findById)
-                .filter(Optional::isPresent)
-                .map(Optional::get)
-                .collect(Collectors.toSet());
-            family.setUsers(users);
-        } */
+        SecurityUtils.getCurrentUserLogin()
+        .flatMap(userRepository::findOneByLogin)
+        .ifPresent(user -> {
+            Set<UserChild> userChilds = user.getUserChilds();
+            userChilds.add(userChild);
+            user.setUserChilds(userChilds);
+            userRepository.save(user);
+        });
+
         userChildRepository.save(userChild);
         return userChild;
     }
