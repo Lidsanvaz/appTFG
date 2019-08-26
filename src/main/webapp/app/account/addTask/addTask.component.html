@@ -56,6 +56,13 @@
                     <label class="form-control-label" for="startDate" jhiTranslate="addTask.form.startDate.label">Start Date</label>
                     <input type="datetime-local" class="form-control" id="startDate" name="startDate" placeholder="{{'addTask.form.startDate.placeholder' | translate}}"
                             formControlName="startDate">
+                    
+                            <div *ngIf="addForm.get('startDate').bef && (addForm.get('nameTask').dirty || addForm.get('nameTask').touched)">
+                                <small class="form-text text-danger" *ngIf="addForm.get('nameTask').errors.required"
+                                        jhiTranslate="addTask.messages.validate.nameTask.required">
+                                    Your name task is required.
+                                </small>
+                            </div>
                             
                     <label class="form-control-label" for="endDate" jhiTranslate="addTask.form.endDate.label">End Date</label>
                     <input type="datetime-local" class="form-control" id="endDate" name="endDate" placeholder="{{'addTask.form.endDate.placeholder' | translate}}"

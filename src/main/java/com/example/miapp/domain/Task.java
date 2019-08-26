@@ -43,9 +43,11 @@ public class Task implements Serializable {
     private String description;
 
     @Field("start_date")
+    @NotNull
     private LocalDateTime startDate;
 
     @Field("end_date")
+    @NotNull
     private LocalDateTime endDate;
 
     @JsonIgnore

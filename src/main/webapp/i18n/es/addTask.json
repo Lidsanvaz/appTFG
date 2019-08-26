@@ -39,7 +39,7 @@
       },
       "success": "<strong>¡Se ha añadido una tarea!</strong>",
       "error": {
-        "fail": "<strong>¡El registro ha fallado!</strong> Por favor, inténtelo de nuevo más tarde.",
+        "fail": "<strong>¡El registro ha fallado!</strong> Compruebe que las fechas son posteriores a la actual.",
         "userexists": "<strong>¡El nombre ya está registrado!</strong> Por favor, escoja otro nombre.",
         "emailexists": "<strong>¡El nombre ya está en uso!</strong> Por favor, escoja otro nombre."
       }

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.example.miapp.security.SecurityUtils;
 import java.util.*;
 import java.util.stream.Collectors;
+import java.time.*;
 
 
 
@@ -39,6 +40,8 @@ public class TaskService {
         task.setNameTask(taskDTO.getNameTask());
         task.setTypeTask(taskDTO.getTypeTask());
         task.setDescription(taskDTO.getDescription());
+        LocalDateTime hoy = LocalDateTime.now(); 
+        if(taskDTO.getStartDate().isAfter(hoy) && taskDTO.getEndDate().isAfter(hoy) && taskDTO.getEndDate().isAfter(taskDTO.getStartDate())){
         task.setStartDate(taskDTO.getStartDate());
         task.setEndDate(taskDTO.getEndDate());
         if (taskDTO.getUserChilds() != null) {
@@ -65,7 +68,7 @@ public class TaskService {
             user.setTasks(tasks);
             userRepository.save(user); 
         });        
-
+    }
         taskRepository.save(task);
         return task;
     }
