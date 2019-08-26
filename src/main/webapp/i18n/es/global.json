@@ -55,7 +55,7 @@
       "nameUserChild.label": "Nombre del niño",
       "nameUserChild.placeholder": "Nombre del niño",
       "bornDate.label": "Fecha de nacimiento",
-      "bornDate.placeholder": "Fecha de nacimiento"
+      "bornDate.placeholder": "Fecha de nacimiento DD-MM-YYYY"
     },
     "messages": {
       "info": {
@@ -98,6 +98,12 @@
         },
         "nameUserChild": {
           "required": "Se requiere un nombre.",
+          "invalid": "El nombre del niño no es válido.",
+          "minlength": "Se requiere que el nombre tenga por lo menos 5 caracteres",
+          "maxlength": "El nombre del niño no puede tener más de 50 caracteres"
+        },
+        "bornDate": {
+          "required": "Se requiere una fecha de nacimiento. Para registrarse como niño debe ser menor de 18 años. Compruebe su fecha de nacimiento.",
           "invalid": "El nombre del niño no es válido.",
           "minlength": "Se requiere que el nombre tenga por lo menos 5 caracteres",
           "maxlength": "El nombre del niño no puede tener más de 50 caracteres"

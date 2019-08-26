@@ -6,6 +6,7 @@ import com.example.miapp.service.dto.UserChildDTO;
 import org.springframework.stereotype.Service;
 import com.example.miapp.security.SecurityUtils;
 import java.util.*;
+import java.time.LocalDate;
 
 
 
@@ -31,8 +32,11 @@ public class UserChildService {
     public UserChild createUserChild(UserChildDTO userChildDTO) {
         UserChild userChild = new UserChild();
         userChild.setNameUserChild(userChildDTO.getNameUserChild());
+        LocalDate hoy = LocalDate.now();   
+        long edad = hoy.getYear() - userChildDTO.getBornDate().getYear();
+        if(edad <= 18){
         userChild.setBornDate(userChildDTO.getBornDate());
-
+        
         SecurityUtils.getCurrentUserLogin()
         .flatMap(userRepository::findOneByLogin)
         .ifPresent(user -> {
@@ -42,7 +46,9 @@ public class UserChildService {
             userRepository.save(user);
         });
 
-        userChildRepository.save(userChild);
+    }
+    userChildRepository.save(userChild);
+
         return userChild;
     }
 

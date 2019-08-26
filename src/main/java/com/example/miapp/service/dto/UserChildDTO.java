@@ -1,7 +1,7 @@
 package com.example.miapp.service.dto;
 import com.example.miapp.domain.UserChild;
 import javax.validation.constraints.*;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 
 /**
@@ -14,7 +14,7 @@ public class UserChildDTO {
     @Size(max = 50)
     private String nameUserChild;
 
-    private LocalDateTime bornDate;
+    private LocalDate bornDate;
 
     public String getNameUserChild() {
         return nameUserChild;
@@ -25,11 +25,11 @@ public class UserChildDTO {
     }
 
     
-    public LocalDateTime getBornDate() {
+    public LocalDate getBornDate() {
         return bornDate;
     }
 
-    public void setBornDate(LocalDateTime bornDate) {
+    public void setBornDate(LocalDate bornDate) {
         this.bornDate = bornDate;
     }
 

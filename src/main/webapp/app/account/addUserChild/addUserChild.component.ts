@@ -22,7 +22,7 @@ export class AddUserChildComponent implements OnInit {
 
   addForm = this.fb.group({
     nameUserChild: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(50)]],
-    bornDate: []
+    bornDate: [Validators.required]
   });
 
   constructor(

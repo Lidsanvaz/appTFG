@@ -8,7 +8,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.time.LocalDateTime;
-
+import java.time.LocalDate;
 
 
 @org.springframework.data.mongodb.core.mapping.Document(collection = "jhi_userchild")
@@ -23,7 +23,8 @@ public class UserChild implements Serializable {
     private String nameUserChild;
 
     @Field("born_date")
-    private LocalDateTime bornDate;
+    @NotNull
+    private LocalDate bornDate;
 
   
 
@@ -35,11 +36,11 @@ public class UserChild implements Serializable {
         this.nameUserChild = nameUserChild;
     }
 
-    public LocalDateTime getBornDate() {
+    public LocalDate getBornDate() {
         return bornDate;
     }
 
-    public void setBornDate(LocalDateTime bornDate) {
+    public void setBornDate(LocalDate bornDate) {
         this.bornDate = bornDate;
     }
 

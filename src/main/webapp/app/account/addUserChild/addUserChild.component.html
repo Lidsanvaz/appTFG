@@ -24,8 +24,15 @@
                     <div class="form-group">
 
                             <label class="form-control-label" for="bornDate" jhiTranslate="global.form.bornDate.label">Born Date</label>
-                            <input type="datetime-local" class="form-control" id="bornDate" name="bornDate" placeholder="{{'global.form.bornDate.placeholder' | translate}}"
+                            <input type="date" class="form-control" id="date" name="bornDate" placeholder="{{'global.form.bornDate.placeholder' | translate}}"
                                      formControlName="bornDate">
+                                     <div *ngIf="addForm.get('bornDate').invalid && (addForm.get('bornDate').dirty || addForm.get('bornDate').touched)">
+                                        <small class="form-text text-danger" *ngIf="addForm.get('bornDate').errors.required"
+                                                jhiTranslate="global.messages.validate.bornDate.required">
+                                            Your born date is required.
+                                        </small>
+                                    </div>
+
 
                         <label class="form-control-label" for="nameUserChild" jhiTranslate="global.form.nameUserChild.label">Name Child</label>
                         <input type="nameUserChild" class="form-control" id="nameUserChild" name="nameUserChild" placeholder="{{'global.form.nameUserChild.placeholder' | translate}}"
