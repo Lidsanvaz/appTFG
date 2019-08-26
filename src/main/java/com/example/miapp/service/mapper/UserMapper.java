@@ -3,6 +3,7 @@ package com.example.miapp.service.mapper;
 import com.example.miapp.domain.Authority;
 import com.example.miapp.domain.User;
 import com.example.miapp.domain.Family;
+import com.example.miapp.domain.Task;
 import com.example.miapp.domain.UserChild;
 import com.example.miapp.service.dto.UserDTO;
 
@@ -56,6 +57,8 @@ public class UserMapper {
             user.setFamilies(families);
             Set<UserChild> userChilds = this.userChildsFromStrings(userDTO.getUserChilds());
             user.setUserChilds(userChilds);
+            Set<Task> tasks = this.tasksFromStrings(userDTO.getTasks());
+            user.setTasks(tasks);
             return user;
         }
     }
@@ -103,6 +106,21 @@ public class UserMapper {
 
         return userChilds;
     }
+
+    private Set<Task> tasksFromStrings(Set<String> tasksAsString) {
+        Set<Task> tasks = new HashSet<>();
+
+        if(tasksAsString != null){
+            tasks = tasksAsString.stream().map(string -> {
+                Task tas = new Task();
+                tas.setNameTask(string);
+                return tas;
+            }).collect(Collectors.toSet());
+        }
+
+        return tasks;
+    }
+
 
     public User userFromId(String id) {
         if (id == null) {

@@ -1,6 +1,6 @@
 package com.example.miapp.web.rest;
 
-
+import com.example.miapp.domain.Task;
 import com.example.miapp.domain.User;
 import com.example.miapp.domain.Family;
 import com.example.miapp.domain.UserChild;
@@ -11,11 +11,13 @@ import com.example.miapp.security.AuthoritiesConstants;
 import org.springframework.security.access.prepost.PreAuthorize;
 import com.example.miapp.service.UserService;
 import com.example.miapp.service.FamilyService;
+import com.example.miapp.service.TaskService;
 import com.example.miapp.service.UserChildService;
 import com.example.miapp.service.dto.PasswordChangeDTO;
 import com.example.miapp.service.dto.UserDTO;
 import com.example.miapp.service.dto.UserChildDTO;
 import com.example.miapp.service.dto.FamilyDTO;
+import com.example.miapp.service.dto.TaskDTO;
 import com.example.miapp.web.rest.errors.*;
 import com.example.miapp.web.rest.vm.KeyAndPasswordVM;
 import com.example.miapp.web.rest.vm.ManagedUserVM;
@@ -53,16 +55,19 @@ public class AccountResource {
 
     private final UserChildService userChildService;
 
+    private final TaskService taskService;
+
 
 
    // private final MailService mailService;
 
-    public AccountResource(UserRepository userRepository, UserService userService, FamilyService familyService, UserChildService userChildService) {
+    public AccountResource(UserRepository userRepository, UserService userService, FamilyService familyService, UserChildService userChildService, TaskService taskService) {
 
         this.userRepository = userRepository;
         this.userService = userService;
         this.familyService = familyService;
         this.userChildService = userChildService;
+        this.taskService = taskService;
     }
 
     /**
@@ -93,6 +98,15 @@ public class AccountResource {
 
     } 
 
+
+    @PostMapping("/addTask")
+    @ResponseStatus(HttpStatus.CREATED)
+    @PreAuthorize("hasRole(\"" + AuthoritiesConstants.USER + "\")")
+    public void createTask(@Valid @RequestBody TaskDTO taskDTO) {
+         Task task = taskService.createTask(taskDTO);
+    
+
+    } 
 
     @PostMapping("/addUserChild")
     @ResponseStatus(HttpStatus.CREATED)

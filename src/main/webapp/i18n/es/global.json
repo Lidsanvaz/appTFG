@@ -21,7 +21,8 @@
         "family": "Crear una unidad familiar",
         "user": "Añadir datos al usuario",
         "addUserChild": "Añadir niños",
-        "userChild": "Completar perfil"
+        "userChild": "Completar perfil",
+        "addTask": "Añadir tareas"
       },
       "admin": {
         "main": "Administración",

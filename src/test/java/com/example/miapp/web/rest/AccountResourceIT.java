@@ -11,6 +11,7 @@ import com.example.miapp.security.AuthoritiesConstants;
 import com.example.miapp.service.FamilyService;
 import com.example.miapp.service.UserChildService;
 import com.example.miapp.service.UserService;
+import com.example.miapp.service.TaskService;
 import com.example.miapp.service.dto.PasswordChangeDTO;
 import com.example.miapp.service.dto.UserDTO;
 import com.example.miapp.web.rest.errors.ExceptionTranslator;
@@ -71,6 +72,9 @@ public class AccountResourceIT {
     @Autowired
     private UserChildService userChildService;
 
+    @Autowired
+    private TaskService taskService;
+
     @Mock
     private UserService mockUserService;
 
@@ -86,10 +90,10 @@ public class AccountResourceIT {
         userRepository.deleteAll();
         MockitoAnnotations.initMocks(this);
         AccountResource accountResource =
-            new AccountResource(userRepository, userService, familyService, userChildService);
+            new AccountResource(userRepository, userService, familyService, userChildService, taskService);
 
         AccountResource accountUserMockResource =
-            new AccountResource(userRepository, mockUserService, familyService, userChildService);
+            new AccountResource(userRepository, mockUserService, familyService, userChildService, taskService);
         this.restMvc = MockMvcBuilders.standaloneSetup(accountResource)
             .setMessageConverters(httpMessageConverters)
             .setControllerAdvice(exceptionTranslator)

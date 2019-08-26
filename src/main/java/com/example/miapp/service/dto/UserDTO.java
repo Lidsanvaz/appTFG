@@ -6,6 +6,7 @@ import com.example.miapp.domain.Authority;
 import com.example.miapp.domain.User;
 import com.example.miapp.domain.Family;
 import com.example.miapp.domain.UserChild;
+import com.example.miapp.domain.Task;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -58,6 +59,8 @@ public class UserDTO {
 
     private Set<String> userChilds;
 
+    private Set<String> tasks;
+
 
     public UserDTO() {
         // Empty constructor needed for Jackson.
@@ -84,6 +87,9 @@ public class UserDTO {
         this.userChilds = user.getUserChilds().stream()
             .map(UserChild::getNameUserChild)
             .collect(Collectors.toSet());
+        this.tasks = user.getTasks().stream()
+            .map(Task::getNameTask)
+            .collect(Collectors.toSet());            
     }
 
     public String getId() {
@@ -200,6 +206,13 @@ public class UserDTO {
         this.userChilds = userChilds;
     }
 
+    public Set<String> getTasks() {
+        return tasks;
+    }
+
+    public void setTasks(Set<String> tasks) {
+        this.tasks = tasks;
+    }
 
     @Override
     public String toString() {

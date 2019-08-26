@@ -4,7 +4,6 @@ import com.example.miapp.config.Constants;
 import com.example.miapp.domain.Authority;
 import com.example.miapp.domain.User;
 import com.example.miapp.domain.Family;
-import com.example.miapp.domain.UserChild;
 import com.example.miapp.repository.AuthorityRepository;
 import com.example.miapp.repository.FamilyRepository;
 import com.example.miapp.repository.UserRepository;
@@ -121,8 +120,6 @@ public class UserService {
                 .collect(Collectors.toSet());
             newUser.setFamilies(families);
         }
-       /*  Set<UserChild> userChilds = new HashSet<>();
-        newUser.setUserChilds(userChilds); */
 
         userRepository.save(newUser);
         this.clearUserCaches(newUser);

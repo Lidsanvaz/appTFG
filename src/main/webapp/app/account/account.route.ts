@@ -8,7 +8,8 @@ import {
   registerRoute,
   settingsRoute,
   createRoute,
-  addUserChildRoute
+  addUserChildRoute,
+  addTaskRoute
 } from './';
 
 const ACCOUNT_ROUTES = [
@@ -19,7 +20,8 @@ const ACCOUNT_ROUTES = [
   registerRoute,
   settingsRoute,
   createRoute,
-  addUserChildRoute
+  addUserChildRoute,
+  addTaskRoute
 ];
 
 export const accountState: Routes = [

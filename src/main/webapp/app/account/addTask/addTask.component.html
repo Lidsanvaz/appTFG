@@ -1,0 +1,78 @@
+<div>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h1 jhiTranslate="addTask.title">Add Task</h1>
+
+             <div class="alert alert-success" *ngIf="success" jhiTranslate="addTask.messages.success">
+                <strong>Registration saved!</strong>
+            </div>
+
+            <div class="alert alert-danger" *ngIf="error" jhiTranslate="addTask.messages.error.fail">
+                <strong>Registration failed!</strong> Please try again later.
+            </div>
+
+            <div class="alert alert-danger" *ngIf="errorUserExists" jhiTranslate="addTask.messages.error.userexists">
+                <strong>Name already registered!</strong> Please choose another one.
+            </div>
+
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <form name="form" role="form" (ngSubmit)="addTask()" [formGroup]="addForm" *ngIf="!success">
+                
+                <div class="form-group">
+
+                    <label class="form-control-label" for="nameTask" jhiTranslate="addTask.form.nameTask.label">Name Task</label>
+                    <input type="nameTask" class="form-control" id="nameTask" name="nameTask" placeholder="{{'addTask.form.nameTask.placeholder' | translate}}"
+                             formControlName="nameTask">
+                    <div *ngIf="addForm.get('nameTask').invalid && (addForm.get('nameTask').dirty || addForm.get('nameTask').touched)">
+                        <small class="form-text text-danger" *ngIf="addForm.get('nameTask').errors.required"
+                                jhiTranslate="addTask.messages.validate.nameTask.required">
+                            Your name task is required.
+                        </small>
+                        <small class="form-text text-danger" *ngIf="addForm.get('nameTask').errors.invalid"
+                               jhiTranslate="addTask.messages.validate.nameTask.invalid">
+                            Your name task is invalid.
+                        </small>
+                        <small class="form-text text-danger" *ngIf="addForm.get('nameTask').errors.minlength"
+                               jhiTranslate="addTask.messages.validate.nameTask.minlength">
+                            Your name task is required to be at least 5 characters.
+                        </small>
+                        <small class="form-text text-danger" *ngIf="addForm.get('nameTask').errors.maxlength"
+                               jhiTranslate="addTask.messages.validate.nameTask.maxlength">
+                            Your name task cannot be longer than 100 characters.
+                        </small>
+                    </div>
+
+                    <label class="form-control-label" for="typeTask" jhiTranslate="addTask.form.typeTask.label">Type Task</label>
+                    <input type="typeTask" class="form-control" id="typeTask" name="typeTask" placeholder="{{'addTask.form.typeTask.placeholder' | translate}}"
+                             formControlName="typeTask">
+
+                    <label class="form-control-label" for="description" jhiTranslate="addTask.form.description.label">Description</label>
+                    <input type="description" class="form-control" id="description" name="description" placeholder="{{'addTask.form.description.placeholder' | translate}}"
+                            formControlName="description">
+ 
+                    <label class="form-control-label" for="startDate" jhiTranslate="addTask.form.startDate.label">Start Date</label>
+                    <input type="datetime-local" class="form-control" id="startDate" name="startDate" placeholder="{{'addTask.form.startDate.placeholder' | translate}}"
+                            formControlName="startDate">
+                            
+                    <label class="form-control-label" for="endDate" jhiTranslate="addTask.form.endDate.label">End Date</label>
+                    <input type="datetime-local" class="form-control" id="endDate" name="endDate" placeholder="{{'addTask.form.endDate.placeholder' | translate}}"
+                            formControlName="endDate"> 
+                </div>
+
+                <div class="form-group">
+                    <label jhiTranslate="addTask.userChilds">User Childs</label>
+                    <select class="form-control" multiple name="userChild" formControlName="userChilds">
+                        <option *ngFor="let userChild of userChilds" [value]="userChild">{{userChild}}</option>
+                    </select>
+                </div>
+
+                <button type="submit" [disabled]="addForm.invalid" class="btn btn-primary" jhiTranslate="addTask.form.button">Add</button>
+            </form>
+            <p></p>
+           
+        </div>
+    </div>
+</div>

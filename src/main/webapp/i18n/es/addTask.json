@@ -1,0 +1,48 @@
+{
+  "addTask": {
+    "title": "Añadir tarea",
+    "userChilds": "Asignar tarea a niño",
+    "form": {
+      "button": "Añadir tarea",
+      "nameTask.label": "Nombre de la tarea",
+      "nameTask.placeholder": "Nombre de tarea",
+      "typeTask.label": "Tipo de tarea",
+      "typeTask.placeholder": "Tipo de tarea",
+      "description.placeholder": "Descripción",
+      "description.label": "Descripción",
+      "startDate.label": "Fecha de inicio",
+      "startDate.placeholder": "Fecha de inicio",
+      "endDate.label": "Fecha de fin",
+      "endDate.placeholder": "Fecha de fin"
+    },
+
+    "menu": {
+      "account": {
+        "addTask": "Añadir tareas"
+      }
+    },
+
+    "messages": {
+      "validate": {
+        "nameTask": {
+          "required": "Se requiere un nombre de tarea.",
+          "invalid": "El nombre de la tarea no es válido.",
+          "minlength": "Se requiere que el nombre tenga por lo menos 5 caracteres",
+          "maxlength": "El nombre de la tarea no puede tener más de 50 caracteres"
+        },
+        "login": {
+          "required": "Su nombre es obligatorio.",
+          "minlength": "Su nombre debe tener al menos 1 caracter.",
+          "maxlength": "Su nombre no puede tener más de 50 caracteres.",
+          "pattern": "Su nombre sólo puede contener letras minúsculas y dígitos."
+        }
+      },
+      "success": "<strong>¡Se ha añadido una tarea!</strong>",
+      "error": {
+        "fail": "<strong>¡El registro ha fallado!</strong> Por favor, inténtelo de nuevo más tarde.",
+        "userexists": "<strong>¡El nombre ya está registrado!</strong> Por favor, escoja otro nombre.",
+        "emailexists": "<strong>¡El nombre ya está en uso!</strong> Por favor, escoja otro nombre."
+      }
+    }
+  }
+}

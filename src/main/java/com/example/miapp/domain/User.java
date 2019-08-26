@@ -84,6 +84,9 @@ public class User extends AbstractAuditingEntity implements Serializable {
     @JsonIgnore
     private Set<UserChild> userChilds = new HashSet<>();
 
+    @JsonIgnore
+    private Set<Task> tasks = new HashSet<>();
+
     public Set<Family> getFamilies() {
         return families;
     }
@@ -100,6 +103,14 @@ public class User extends AbstractAuditingEntity implements Serializable {
         this.userChilds = userChilds;
     }
  
+
+    public Set<Task> getTasks() {
+        return tasks;
+    }
+
+    public void setTasks(Set<Task> tasks) {
+        this.tasks = tasks;
+    }
     public String getId() {
         return id;
     }
