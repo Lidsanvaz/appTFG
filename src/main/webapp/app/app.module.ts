@@ -1,12 +1,14 @@
 import './vendor.ts';
 
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgbDatepickerConfig } from '@ng-bootstrap/ng-bootstrap';
 import { NgxWebstorageModule } from 'ngx-webstorage';
 import { NgJhipsterModule } from 'ng-jhipster';
-
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { MdbFileUploadModule } from 'mdb-file-upload';
+import { MdbCalendarModule } from 'mdb-calendar';
 import { AuthInterceptor } from './blocks/interceptor/auth.interceptor';
 import { AuthExpiredInterceptor } from './blocks/interceptor/auth-expired.interceptor';
 import { ErrorHandlerInterceptor } from './blocks/interceptor/errorhandler.interceptor';
@@ -19,7 +21,7 @@ import { MiappjhipsterAccountModule } from './account/account.module';
 import { MiappjhipsterEntityModule } from './entities/entity.module';
 import * as moment from 'moment';
 // jhipster-needle-angular-add-module-import JHipster will add new module here
-import { JhiMainComponent, NavbarComponent, FooterComponent, PageRibbonComponent, ActiveMenuDirective, ErrorComponent } from './layouts';
+import { JhiMainComponent, NavbarComponent, PageRibbonComponent, ActiveMenuDirective, ErrorComponent, AppComponent } from './layouts';
 
 @NgModule({
   imports: [
@@ -33,6 +35,9 @@ import { JhiMainComponent, NavbarComponent, FooterComponent, PageRibbonComponent
       defaultI18nLang: 'es'
     }),
     MiappjhipsterSharedModule.forRoot(),
+    MDBBootstrapModule.forRoot(),
+    MdbFileUploadModule,
+    MdbCalendarModule,
     MiappjhipsterCoreModule,
     MiappjhipsterHomeModule,
     MiappjhipsterAccountModule,
@@ -40,7 +45,8 @@ import { JhiMainComponent, NavbarComponent, FooterComponent, PageRibbonComponent
     MiappjhipsterEntityModule,
     MiappjhipsterAppRoutingModule
   ],
-  declarations: [JhiMainComponent, NavbarComponent, ErrorComponent, PageRibbonComponent, ActiveMenuDirective, FooterComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  declarations: [JhiMainComponent, NavbarComponent, ErrorComponent, PageRibbonComponent, ActiveMenuDirective, AppComponent],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

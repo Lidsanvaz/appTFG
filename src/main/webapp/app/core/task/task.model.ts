@@ -1,3 +1,3 @@
 export class Task {
-  constructor(public users: string[], public nameTask: string, public userChilds: string[]) {}
+  constructor(public nameTask: string, public startDate: Date, public endDate: Date, public color: string) {}
 }
