@@ -20,13 +20,14 @@ export class AddTaskComponent implements OnInit {
   success: boolean;
   modalRef: NgbModalRef;
   userChilds: any[];
+  typeTasks: any[];
 
   addForm = this.fb.group({
     nameTask: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(50)]],
-    typeTask: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(50)]],
     description: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(100)]],
     startDate: [],
     endDate: [],
+    typeTasks: [[]],
     userChilds: [[]]
   });
 
@@ -51,13 +52,13 @@ export class AddTaskComponent implements OnInit {
   addTask() {
     let registerAccount = {};
     const nameTask = this.addForm.get(['nameTask']).value;
-    const typeTask = this.addForm.get(['typeTask']).value;
     const description = this.addForm.get(['description']).value;
     const startDate = this.addForm.get(['startDate']).value;
     const endDate = this.addForm.get(['endDate']).value;
+    const typeTasks = this.addForm.get(['typeTasks']).value;
     const userChilds = this.addForm.get(['userChilds']).value;
 
-    registerAccount = { ...registerAccount, nameTask, typeTask, description, startDate, endDate, userChilds };
+    registerAccount = { ...registerAccount, nameTask, description, startDate, endDate, typeTasks, userChilds };
     this.doNotMatch = null;
     this.error = null;
     this.errorUserExists = null;

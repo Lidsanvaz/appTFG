@@ -45,9 +45,6 @@
                         </small>
                     </div>
 
-                    <label class="form-control-label" for="typeTask" jhiTranslate="addTask.form.typeTask.label">Type Task</label>
-                    <input type="typeTask" class="form-control" id="typeTask" name="typeTask" placeholder="{{'addTask.form.typeTask.placeholder' | translate}}"
-                             formControlName="typeTask">
 
                     <label class="form-control-label" for="description" jhiTranslate="addTask.form.description.label">Description</label>
                     <input type="description" class="form-control" id="description" name="description" placeholder="{{'addTask.form.description.placeholder' | translate}}"
@@ -70,12 +67,34 @@
                 </div>
 
                 <div class="form-group">
+                    <label jhiTranslate="addTask.form.typeTask.label">Type tasks</label>
+                    <select class="form-control" multiple name="typeTask" formControlName="typeTasks">
+                        <option>Extraescolar</option>
+                        <option>Médicos</option>
+                        <option>Tutorías</option>
+                        <option>Colegio</option>
+                        <option>Otros</option>
+
+                    </select>
+                </div>
+                <div class="form-group">
                     <label jhiTranslate="addTask.userChilds">User Childs</label>
                     <select class="form-control" multiple name="userChild" formControlName="userChilds">
                         <option *ngFor="let userChild of userChilds" [value]="userChild">{{userChild}}</option>
                     </select>
                 </div>
+                <div class="form-group">
+                    <label jhiTranslate="addTask.weekDays">Week Days</label>
+                    <select class="form-control" multiple name="userChild" formControlName="weekDays">
+                        <option>Lunes</option>
+                        <option>Martes</option>
+                        <option>Miércoles</option>
+                        <option>Jueves</option>
+                        <option>Viernes</option>
+                        <option>Sábado</option>
 
+                    </select>
+                </div>
                 <button type="submit" [disabled]="addForm.invalid" class="btn btn-primary" jhiTranslate="addTask.form.button">Add</button>
             </form>
             <p></p>

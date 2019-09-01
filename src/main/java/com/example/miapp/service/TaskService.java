@@ -2,6 +2,7 @@ package com.example.miapp.service;
 import com.example.miapp.domain.Task;
 import com.example.miapp.domain.User;
 import com.example.miapp.domain.UserChild;
+import com.example.miapp.domain.Family;
 import com.example.miapp.repository.TaskRepository;
 import com.example.miapp.repository.UserRepository;
 import com.example.miapp.repository.UserChildRepository;
@@ -40,12 +41,12 @@ public class TaskService {
     public Task createTask(TaskDTO taskDTO) {
         Task task = new Task();
         task.setNameTask(taskDTO.getNameTask());
-        task.setTypeTask(taskDTO.getTypeTask());
         task.setDescription(taskDTO.getDescription());
         LocalDateTime hoy = LocalDateTime.now(); 
         if(taskDTO.getStartDate().isAfter(hoy) && taskDTO.getEndDate().isAfter(hoy) && taskDTO.getEndDate().isAfter(taskDTO.getStartDate())){
         task.setStartDate(taskDTO.getStartDate());
         task.setEndDate(taskDTO.getEndDate());
+        task.setTypeTasks(taskDTO.getTypeTasks());
         if (taskDTO.getUserChilds() != null) {
             Set<UserChild> userChilds = taskDTO.getUserChilds().stream()
                 .map(userChildRepository::findById)
@@ -53,7 +54,8 @@ public class TaskService {
                 .map(Optional::get)
                 .collect(Collectors.toSet());
             task.setUserChilds(userChilds);
-        }
+        }        
+
        /*  SecurityUtils.getCurrentUserLogin()
         .flatMap(userRepository::findOneByLogin)
         .ifPresent(user -> {
@@ -68,7 +70,11 @@ public class TaskService {
             Set<Task> tasks = user.getTasks();
             tasks.add(task);
             user.setTasks(tasks);
-            userRepository.save(user); 
+            
+            Set<Family> families = user.getFamilies();
+            task.setFamilies(families); 
+            userRepository.save(user);
+            taskRepository.save(task);
         });        
     }
         taskRepository.save(task);
@@ -76,32 +82,43 @@ public class TaskService {
     }
 
     public List<String> getUserChilds() {
-     /*    List<String> re;
-        SecurityUtils.getCurrentUserLogin()
-        .flatMap(userRepository::findOneByLogin)
-        .ifPresent(user -> {
-            Set<UserChild> userchilds = user.getUserChilds();
-            re = userchilds.stream().map(UserChild::getNameUserChild).collect(Collectors.toList());
-        });   */
-         List<String> res = userChildRepository.findAll().stream().map(UserChild::getNameUserChild).collect(Collectors.toList());
-         return res;
+        Optional<User> us = SecurityUtils.getCurrentUserLogin().flatMap(userRepository::findOneByLogin);
+
+        Set<UserChild> userchilds = us.get().getUserChilds();
+        return userchilds.stream().map(UserChild::getNameUserChild).collect(Collectors.toList());
+     
+    }
+
+
+    public List<String> getWeekDays(){
+        List<String> res = new ArrayList<String>();
+        res.add("Lunes");
+        res.add("Martes");
+        res.add("Miércoles");
+        res.add("Jueves");
+        res.add("Viernes");
+        res.add("Sábado");
+        return res;
     }
 
     public Page<TaskDTO> getAllManagedTasks(Pageable pageable) {
-        return taskRepository.findAll(pageable).map(TaskDTO::new);
-    }
+/*         Optional<User> us = SecurityUtils.getCurrentUserLogin().flatMap(userRepository::findOneByLogin);
+ */        
+         return taskRepository.findAll(pageable).map(TaskDTO::new);
+     }
 
 
 
     public Task createPeriodicTask(TaskDTO taskDTO) {
         Task task = new Task();
         task.setNameTask(taskDTO.getNameTask());
-        task.setTypeTask(taskDTO.getTypeTask());
+        task.setTypeTasks(taskDTO.getTypeTasks());
         task.setDescription(taskDTO.getDescription());
         LocalDateTime hoy = LocalDateTime.now(); 
         if(taskDTO.getStartDate().isAfter(hoy) && taskDTO.getEndDate().isAfter(hoy) && taskDTO.getEndDate().isAfter(taskDTO.getStartDate())){
         task.setStartDate(taskDTO.getStartDate());
         task.setEndDate(taskDTO.getEndDate());
+        task.setWeekDays(taskDTO.getWeekDays());
         if (taskDTO.getUserChilds() != null) {
             Set<UserChild> userChilds = taskDTO.getUserChilds().stream()
                 .map(userChildRepository::findById)
@@ -117,10 +134,14 @@ public class TaskService {
             Set<Task> tasks = user.getTasks();
             tasks.add(task);
             user.setTasks(tasks);
-            userRepository.save(user); 
+             
+            Set<Family> families = user.getFamilies();
+            task.setFamilies(families); 
+            userRepository.save(user);
+            taskRepository.save(task);
         });        
     }
-        taskRepository.save(task);
+        /* taskRepository.save(task); */
         return task;
     }
 

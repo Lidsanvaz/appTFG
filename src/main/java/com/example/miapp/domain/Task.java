@@ -33,10 +33,7 @@ public class Task implements Serializable {
     @NotNull
     private String nameTask;
 
-    
-    @Size(max = 50)
-    @Field("type_task")
-    private String typeTask;
+  
 
     @Size(max = 100)
     @Field("description")
@@ -50,13 +47,21 @@ public class Task implements Serializable {
     @NotNull
     private LocalDateTime endDate;
 
+      
+    @JsonIgnore
+    private Set<String> typeTasks = new HashSet<>();
+
     @JsonIgnore
     private Set<User> users = new HashSet<>(); 
 
     @JsonIgnore
     private Set<UserChild> userChilds = new HashSet<>();
 
-    
+    @JsonIgnore
+    private Set<Family> families = new HashSet<>();
+
+    @JsonIgnore
+    private Set<String> weekDays = new HashSet<>();
 
     public Set<UserChild> getUserChilds() {
         return userChilds;
@@ -64,6 +69,14 @@ public class Task implements Serializable {
 
     public void setUserChilds(Set<UserChild> userChilds) {
         this.userChilds = userChilds;
+    }
+
+    public Set<Family> getFamilies() {
+        return families;
+    }
+
+    public void setFamilies(Set<Family> families) {
+        this.families = families;
     }
  
     public String getNameTask() {
@@ -75,12 +88,12 @@ public class Task implements Serializable {
     }
 
     
-    public String getTypeTask() {
-        return typeTask;
+    public Set<String> getTypeTasks() {
+        return typeTasks;
     }
 
-    public void setTypeTask(String typeTask) {
-        this.typeTask = typeTask;
+    public void setTypeTasks(Set<String> typeTasks) {
+        this.typeTasks = typeTasks;
     }
 
     public String getDescription() {
@@ -116,6 +129,12 @@ public class Task implements Serializable {
         this.users = users;
     }
 
-  
+    public Set<String> getWeekDays() {
+        return weekDays;
+    }
+
+    public void setWeekDays(Set<String> weekDays) {
+        this.weekDays = weekDays;
+    }
     
 }

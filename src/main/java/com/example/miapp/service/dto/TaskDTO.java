@@ -1,6 +1,7 @@
 package com.example.miapp.service.dto;
 import com.example.miapp.domain.Task;
 import com.example.miapp.domain.User;
+import com.example.miapp.domain.Family;
 import com.example.miapp.domain.UserChild;
 
 import javax.validation.constraints.*;
@@ -17,7 +18,7 @@ public class TaskDTO {
     @Size(max = 50)
     private String nameTask;
 
-    private String typeTask;
+    private Set<String> typeTasks;
 
     private String description;
 
@@ -29,6 +30,10 @@ public class TaskDTO {
     private Set<String> users;
 
     private Set<String> userChilds;
+
+    private Set<String> weekDays;
+
+    private Set<String> families;
 
     public Set<String> getUsers() {
         return users;
@@ -48,6 +53,25 @@ public class TaskDTO {
     }
     
 
+
+    public Set<String> getWeekDays() {
+        return weekDays;
+    }
+
+    public void setWeekDays(Set<String> weekDays) {
+        this.weekDays = weekDays;
+    }
+
+
+    public Set<String> getFamilies() {
+        return families;
+    }
+
+    public void setFamilies(Set<String> families) {
+        this.families = families;
+    }
+
+
     public String getNameTask() {
         return nameTask;
     }
@@ -57,12 +81,12 @@ public class TaskDTO {
     }
 
 
-    public String getTypeTask() {
-        return typeTask;
+    public Set<String> getTypeTasks() {
+        return typeTasks;
     }
 
-    public void setTypeTask(String typeTask) {
-        this.typeTask = typeTask;
+    public void setTypeTasks(Set<String> typeTasks) {
+        this.typeTasks = typeTasks;
     }
 
     public String getDescription() {
@@ -96,17 +120,20 @@ public class TaskDTO {
 
     public TaskDTO(Task task) {
         this.nameTask = task.getNameTask();
-        this.typeTask = task.getTypeTask();
+        this.typeTasks = task.getTypeTasks();
         this.description = task.getDescription();
         this.startDate = task.getStartDate();
         this.endDate = task.getEndDate();
+        this.weekDays = task.getWeekDays();
         this.users = task.getUsers().stream()
         .map(User::getLogin)
         .collect(Collectors.toSet());
         this.userChilds = task.getUserChilds().stream()
         .map(UserChild::getNameUserChild)
         .collect(Collectors.toSet());
-       
+        this.families = task.getFamilies().stream()
+        .map(Family::getNameFamily)
+        .collect(Collectors.toSet());
     }
 
    

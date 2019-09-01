@@ -15,7 +15,7 @@
       },
       "success": "<strong>¡Se ha añadido un niño!</strong>",
       "error": {
-        "fail": "<strong>Se requiere una fecha de nacimiento.</strong> Para registrarse como niño debe ser menor de 18 años. Compruebe su fecha de nacimiento.",
+        "fail": "<strong>Se requiere una fecha de nacimiento.</strong> Para registrarse como niño debe ser menor de 16 años. Compruebe su fecha de nacimiento.",
         "userexists": "<strong>¡El nombre ya está registrado!</strong> Por favor, escoja otro nombre.",
         "emailexists": "<strong>¡El nombre ya está en uso!</strong> Por favor, escoja otro nombre."
       }

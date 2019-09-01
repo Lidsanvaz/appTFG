@@ -18,10 +18,11 @@ export class UserTaskComponent implements OnInit, OnDestroy {
   success: any;
   routeData: any;
   links: any;
-  totalItems: any; /*  previousPage: any;
-    reverse: any; */
-  /*   page: any;
-   */ /*   predicate: any;
+  totalItems: any;
+  previousPage: any;
+  /*  reverse: any; */
+  page: any;
+  /*   predicate: any;
 /*  */
   /*   itemsPerPage: any;
    */ constructor(
@@ -34,13 +35,13 @@ export class UserTaskComponent implements OnInit, OnDestroy {
     private eventManager: JhiEventManager,
     private modalService: NgbModal
   ) {
-    /*     this.itemsPerPage = ITEMS_PER_PAGE;
+    /*  this.itemsPerPage = ITEMS_PER_PAGE; */
     this.routeData = this.activatedRoute.data.subscribe(data => {
       this.page = data['pagingParams'].page;
       this.previousPage = data['pagingParams'].page;
-       this.reverse = data['pagingParams'].ascending;
-      this.predicate = data['pagingParams'].predicate; 
-    }); */
+      /*     this.reverse = data['pagingParams'].ascending;
+      this.predicate = data['pagingParams'].predicate;  */
+    });
   }
 
   ngOnInit() {
@@ -75,18 +76,17 @@ export class UserTaskComponent implements OnInit, OnDestroy {
     return result;
   } */
 
-  /* loadPage(page: number) {
+  loadPage(page: number) {
     if (page !== this.previousPage) {
       this.previousPage = page;
-       this.transition();
-     } 
-  } */
+      this.transition();
+    }
+  }
 
-  /*  transition() {
-    this.router.navigate(['/userTask'], {
-    });
+  transition() {
+    this.router.navigate(['/userTask'], {});
     this.loadAll();
-  }  */
+  }
 
   private onSuccess(data) {
     /*     this.links = this.parseLinks.parse(headers.get('link'));

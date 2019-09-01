@@ -2,6 +2,7 @@
   "addTask": {
     "title": "Añadir tarea",
     "userChilds": "Asignar tarea a niño",
+    "weekDays": "Días de la semana",
     "form": {
       "tasks": "Tareas",
       "button": "Añadir tarea",
@@ -16,7 +17,8 @@
       "endDate.label": "Fecha de fin",
       "endDate.placeholder": "Fecha de fin",
       "userChilds.label": "Niño asociado",
-      "users.label": "Adulto asignado"
+      "users.label": "Adulto asignado",
+      "assignTask": "Asignarse una tarea"
     },
 
     "menu": {

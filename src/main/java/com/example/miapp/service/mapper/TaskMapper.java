@@ -2,6 +2,7 @@ package com.example.miapp.service.mapper;
 import com.example.miapp.domain.Task;
 import com.example.miapp.domain.User;
 import com.example.miapp.domain.UserChild;
+import com.example.miapp.domain.Family;
 
 import com.example.miapp.service.dto.TaskDTO;
 
@@ -43,11 +44,16 @@ public class TaskMapper {
         } else {
             Task task = new Task();
             task.setNameTask(taskDTO.getNameTask());
+            task.setTypeTasks(taskDTO.getTypeTasks());
+            task.setDescription(taskDTO.getDescription());
+            task.setWeekDays(taskDTO.getWeekDays());
+           
             Set<User> users = this.usersFromStrings(taskDTO.getUsers());
             task.setUsers(users);
             Set<UserChild> userChilds = this.userChildsFromStrings(taskDTO.getUserChilds());
             task.setUserChilds(userChilds);
-
+            Set<Family> families = this.familiesFromStrings(taskDTO.getFamilies());
+            task.setFamilies(families);
             return task;
         }
     }
@@ -79,6 +85,21 @@ public class TaskMapper {
         }
 
         return userChilds;
+    }
+
+
+    private Set<Family> familiesFromStrings(Set<String> familiesAsString) {
+        Set<Family> families = new HashSet<>();
+
+        if(familiesAsString != null){
+            families = familiesAsString.stream().map(string -> {
+                Family auth = new Family();
+                auth.setNameFamily(string);
+                return auth;
+            }).collect(Collectors.toSet());
+        }
+
+        return families;
     }
    
 }

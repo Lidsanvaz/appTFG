@@ -1,21 +1,22 @@
 <div>
      <h2>
         <span id="user-management-page-heading" jhiTranslate="addTask.form.tasks">Tasks</span>
-   <!--     <button class="btn btn-primary float-right jh-create-entity" [routerLink]="['./new']">
-            <fa-icon [icon]="'plus'"></fa-icon> <span jhiTranslate="userManagement.home.createLabel">Create a new User</span>
-        </button> -->
+        <button class="btn btn-primary float-right jh-create-entity" [routerLink]="['editUserTask']">
+            <fa-icon [icon]="'plus'"></fa-icon> <span jhiTranslate="addTask.form.assignTask">Assign a task</span>
+        </button> 
     </h2> 
     <jhi-alert></jhi-alert>
     <div class="table-responsive" *ngIf="tasks">
         <table class="table table-striped">
             <thead>
-                <tr>
-<!--             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
- -->                <th><span jhiTranslate="addTask.form.nameTask.label">Name Task</span> </th>
+                
+             <tr jhiSort [callback]="transition.bind(this)">
+                 <th><span jhiTranslate="addTask.form.nameTask.label">Name Task</span> </th>
                 <th><span jhiTranslate="addTask.form.typeTask.label">Type Task</span> </th>
                 <th><span jhiTranslate="addTask.form.description.label">Description</span> </th>
                 <th><span jhiTranslate="addTask.form.userChilds.label">User Childs</span></th>
                 <th><span jhiTranslate="addTask.form.users.label">Users</span></th>
+                <th><span jhiTranslate="addTask.weekDays">Week days</span></th>
                 <th><span jhiTranslate="addTask.form.startDate.label">Start Date</span> </th>
                 <th><span jhiTranslate="addTask.form.endDate.label">End Date</span> </th>
                 <th></th>
@@ -25,7 +26,11 @@
              <tr *ngFor="let task of tasks">
                 
                 <td>{{task.nameTask}}</td>
-                <td>{{task.typeTask}}</td>
+                <td>
+                    <div *ngFor="let typeTask of task.typeTasks">
+                        <span class="badge badge-info">{{ typeTask }}</span>
+                    </div>
+                </td>
                 <td>{{task.description}}</td>
                <!--  <td>
                     <button class="btn btn-danger btn-sm" (click)="setActive(user, true)" *ngIf="!user.activated"
@@ -42,6 +47,12 @@
                 <td>
                     <div *ngFor="let user of task.users">
                         <span class="badge badge-info">{{ user }}</span>
+                    </div>
+                </td>
+    
+                <td>
+                    <div *ngFor="let weekDay of task.weekDays">
+                        <span class="badge badge-info">{{ weekDay }}</span>
                     </div>
                 </td>
                 <td>{{task.startDate | date:'dd/MM/yy HH:mm'}}</td>
