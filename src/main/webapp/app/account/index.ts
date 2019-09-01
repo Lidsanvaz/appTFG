@@ -1,6 +1,9 @@
 export * from './activate/activate.component';
 export * from './activate/activate.service';
 export * from './activate/activate.route';
+export * from './addPeriodicTask/addPeriodicTask.component';
+export * from './addPeriodicTask/addPeriodicTask.service';
+export * from './addPeriodicTask/addPeriodicTask.route';
 export * from './addTask/addTask.component';
 export * from './addTask/addTask.service';
 export * from './addTask/addTask.route';
@@ -25,4 +28,6 @@ export * from './register/register.service';
 export * from './register/register.route';
 export * from './settings/settings.component';
 export * from './settings/settings.route';
+export * from './userTask/userTask.component';
+export * from './userTask/userTask.route';
 export * from './account.route';

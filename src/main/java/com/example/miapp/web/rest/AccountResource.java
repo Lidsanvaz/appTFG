@@ -108,6 +108,15 @@ public class AccountResource {
 
     } 
 
+    @PostMapping("/addPeriodicTask")
+    @ResponseStatus(HttpStatus.CREATED)
+    @PreAuthorize("hasRole(\"" + AuthoritiesConstants.USER + "\")")
+    public void createPeriodicTask(@Valid @RequestBody TaskDTO taskDTO) {
+         Task task = taskService.createPeriodicTask(taskDTO);
+    
+
+    } 
+
     @PostMapping("/addUserChild")
     @ResponseStatus(HttpStatus.CREATED)
     @PreAuthorize("hasRole(\"" + AuthoritiesConstants.USER + "\")")

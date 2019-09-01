@@ -19,4 +19,9 @@ export class TaskService {
   users(): Observable<string[]> {
     return this.http.get<string[]>(SERVER_API_URL + 'api/task/users');
   }
+
+  query(): Observable<HttpResponse<Task[]>> {
+    /*     const options = createRequestOption(req);
+     */ return this.http.get<Task[]>(this.resourceUrl, { observe: 'response' });
+  }
 }

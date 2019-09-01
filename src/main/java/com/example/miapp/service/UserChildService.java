@@ -34,7 +34,7 @@ public class UserChildService {
         userChild.setNameUserChild(userChildDTO.getNameUserChild());
         LocalDate hoy = LocalDate.now();   
         long edad = hoy.getYear() - userChildDTO.getBornDate().getYear();
-        if(edad <= 18 ){
+        if(edad <= 16 ){
         userChild.setBornDate(userChildDTO.getBornDate());
         
         SecurityUtils.getCurrentUserLogin()

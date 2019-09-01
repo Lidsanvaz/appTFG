@@ -33,7 +33,7 @@ export class AppComponent implements OnInit {
     const uid = Math.random()
       .toString(36)
       .substr(2, 9);
-    return `mdb-file-upload-event-${uid}`;
+    return `mdb-calendar-event-${uid}`;
   }
 
   onEventEdit(event: Task) {

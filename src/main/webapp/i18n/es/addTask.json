@@ -3,6 +3,7 @@
     "title": "Añadir tarea",
     "userChilds": "Asignar tarea a niño",
     "form": {
+      "tasks": "Tareas",
       "button": "Añadir tarea",
       "nameTask.label": "Nombre de la tarea",
       "nameTask.placeholder": "Nombre de tarea",
@@ -13,7 +14,9 @@
       "startDate.label": "Fecha de inicio",
       "startDate.placeholder": "Fecha de inicio",
       "endDate.label": "Fecha de fin",
-      "endDate.placeholder": "Fecha de fin"
+      "endDate.placeholder": "Fecha de fin",
+      "userChilds.label": "Niño asociado",
+      "users.label": "Adulto asignado"
     },
 
     "menu": {

@@ -22,11 +22,13 @@
         "user": "Añadir datos al usuario",
         "addUserChild": "Añadir niños",
         "userChild": "Completar perfil",
-        "addTask": "Añadir tareas"
+        "addTask": "Añadir tareas eventuales",
+        "addPeriodicTask": "Añadir tareas periódicas"
       },
       "admin": {
         "main": "Administración",
         "userManagement": "Gestión de usuarios",
+        "userTask": "Tareas del usuario",
         "tracker": "Registro de los usuarios",
         "metrics": "Métricas",
         "health": "Salud",

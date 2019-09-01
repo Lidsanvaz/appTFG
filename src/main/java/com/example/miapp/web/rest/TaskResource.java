@@ -14,6 +14,17 @@ import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.*;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.util.MultiValueMap;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
+import io.github.jhipster.web.util.PaginationUtil;
+import io.github.jhipster.web.util.ResponseUtil;
+import com.example.miapp.config.Constants;
+
 
 
 @RestController
@@ -51,6 +62,13 @@ public class TaskResource {
     @GetMapping("/task/userChilds")
     public List<String> getUserChilds() {
         return taskService.getUserChilds();
+    }
+
+    @GetMapping("/task")
+    public ResponseEntity<List<TaskDTO>> getAllTasks(@RequestParam MultiValueMap<String, String> queryParams, UriComponentsBuilder uriBuilder, Pageable pageable) {
+        final Page<TaskDTO> page = taskService.getAllManagedTasks(pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(uriBuilder.queryParams(queryParams), page);
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
 
  

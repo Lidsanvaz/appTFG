@@ -9,7 +9,9 @@ import {
   settingsRoute,
   createRoute,
   addUserChildRoute,
-  addTaskRoute
+  addTaskRoute,
+  addPeriodicTaskRoute,
+  userTaskRoute
 } from './';
 
 const ACCOUNT_ROUTES = [
@@ -21,7 +23,9 @@ const ACCOUNT_ROUTES = [
   settingsRoute,
   createRoute,
   addUserChildRoute,
-  addTaskRoute
+  addTaskRoute,
+  addPeriodicTaskRoute,
+  userTaskRoute
 ];
 
 export const accountState: Routes = [
