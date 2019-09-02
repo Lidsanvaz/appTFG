@@ -68,13 +68,18 @@ export class UserTaskComponent implements OnInit, OnDestroy {
     return item.nameTask;
   }
 
-  /*   sort() {
-    const result = [this.predicate + ',' + (this.reverse ? 'asc' : 'desc')];
-    if (this.predicate !== 'id') {
-      result.push('id');
-    }
-    return result;
-  } */
+  setActive(task) {
+    this.taskService.update(task).subscribe(response => {
+      if (response.status === 200) {
+        this.error = null;
+        this.success = 'OK';
+        this.loadAll();
+      } else {
+        this.success = null;
+        this.error = 'ERROR';
+      }
+    });
+  }
 
   loadPage(page: number) {
     if (page !== this.previousPage) {

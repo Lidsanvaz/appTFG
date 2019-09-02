@@ -3,6 +3,8 @@
     "title": "Añadir tarea",
     "userChilds": "Asignar tarea a niño",
     "weekDays": "Días de la semana",
+    "families": "Familia asociada",
+    "userActive": "Asociarse a la tarea",
     "form": {
       "tasks": "Tareas",
       "button": "Añadir tarea",

@@ -1,9 +1,7 @@
 <div>
      <h2>
         <span id="user-management-page-heading" jhiTranslate="addTask.form.tasks">Tasks</span>
-        <button class="btn btn-primary float-right jh-create-entity" [routerLink]="['editUserTask']">
-            <fa-icon [icon]="'plus'"></fa-icon> <span jhiTranslate="addTask.form.assignTask">Assign a task</span>
-        </button> 
+         
     </h2> 
     <jhi-alert></jhi-alert>
     <div class="table-responsive" *ngIf="tasks">
@@ -14,8 +12,11 @@
                  <th><span jhiTranslate="addTask.form.nameTask.label">Name Task</span> </th>
                 <th><span jhiTranslate="addTask.form.typeTask.label">Type Task</span> </th>
                 <th><span jhiTranslate="addTask.form.description.label">Description</span> </th>
+                <th><span jhiTranslate="addTask.userActive">Associated user</span></th>
+              
                 <th><span jhiTranslate="addTask.form.userChilds.label">User Childs</span></th>
                 <th><span jhiTranslate="addTask.form.users.label">Users</span></th>
+                <th><span jhiTranslate="addTask.families">Families</span></th>
                 <th><span jhiTranslate="addTask.weekDays">Week days</span></th>
                 <th><span jhiTranslate="addTask.form.startDate.label">Start Date</span> </th>
                 <th><span jhiTranslate="addTask.form.endDate.label">End Date</span> </th>
@@ -32,12 +33,10 @@
                     </div>
                 </td>
                 <td>{{task.description}}</td>
-               <!--  <td>
-                    <button class="btn btn-danger btn-sm" (click)="setActive(user, true)" *ngIf="!user.activated"
-                            jhiTranslate="userManagement.deactivated">Deactivated</button>
-                    <button class="btn btn-success btn-sm" (click)="setActive(user, false)" *ngIf="user.activated"
-                            [disabled]="currentAccount.login === user.login" jhiTranslate="userManagement.activated">Activated</button>
-                </td> -->
+                 <td>
+                    <button class="btn btn-success btn-sm" (click)="setActive(task)"
+                            jhiTranslate="addTask.userActive">Associated user</button>
+                     </td> 
 
                 <td>
                     <div *ngFor="let userChild of task.userChilds">
@@ -49,7 +48,11 @@
                         <span class="badge badge-info">{{ user }}</span>
                     </div>
                 </td>
-    
+                <td>
+                    <div *ngFor="let family of task.families">
+                        <span class="badge badge-info">{{ family }}</span>
+                    </div>
+                </td>
                 <td>
                     <div *ngFor="let weekDay of task.weekDays">
                         <span class="badge badge-info">{{ weekDay }}</span>

@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot, Routes, CanActivate } from '@angular/router';
+import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot, Route, CanActivate } from '@angular/router';
 import { JhiPaginationUtil, JhiResolvePagingParams } from 'ng-jhipster';
 
 import { AccountService, User, UserService } from 'app/core';
 import { UserTaskComponent } from './userTask.component';
-import { EditUserTaskComponent } from './editUserTask.component';
 
 @Injectable({ providedIn: 'root' })
 export class UserTaskResolve implements CanActivate {
@@ -15,22 +14,12 @@ export class UserTaskResolve implements CanActivate {
   }
 }
 
-export const userTaskRoute: Routes = [
-  {
-    path: 'userTask',
-    component: UserTaskComponent,
+export const userTaskRoute: Route = {
+  path: 'userTask',
+  component: UserTaskComponent,
 
-    data: {
-      authorities: ['ROLE_USER'],
-      pageTitle: 'register.title'
-    }
-  },
-  {
-    path: 'editUserTask',
-    component: EditUserTaskComponent,
-    data: {
-      authorities: ['ROLE_USER'],
-      pageTitle: 'register.title'
-    }
+  data: {
+    authorities: ['ROLE_USER'],
+    pageTitle: 'register.title'
   }
-];
+};

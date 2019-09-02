@@ -28,7 +28,6 @@ export * from './register/register.service';
 export * from './register/register.route';
 export * from './settings/settings.component';
 export * from './settings/settings.route';
-export * from './userTask/editUserTask.component';
 export * from './userTask/userTask.component';
 export * from './userTask/userTask.route';
 export * from './account.route';

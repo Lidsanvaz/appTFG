@@ -145,6 +145,25 @@ public class TaskService {
         return task;
     }
 
+    public Optional<TaskDTO> updateTask(TaskDTO taskDTO) {
+        return Optional.of(taskRepository
+            .findById(taskDTO.getNameTask()))
+            .filter(Optional::isPresent)
+            .map(Optional::get)
+            .map(task -> {
 
+                SecurityUtils.getCurrentUserLogin()
+                .flatMap(userRepository::findOneByLogin)
+                .ifPresent(user -> {
+                    Set<User> users = task.getUsers();
+                    users.add(user);
+                    task.setUsers(users);
+                    taskRepository.save(task);
+                });
+
+                return task;
+            })
+            .map(TaskDTO::new);
+    }
 
 }

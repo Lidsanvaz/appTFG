@@ -19,12 +19,12 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.util.MultiValueMap;
-import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 import io.github.jhipster.web.util.PaginationUtil;
 import io.github.jhipster.web.util.ResponseUtil;
 import com.example.miapp.config.Constants;
-
+import org.springframework.security.access.prepost.PreAuthorize;
+import com.example.miapp.security.AuthoritiesConstants;
 
 
 @RestController
@@ -71,5 +71,17 @@ public class TaskResource {
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
 
+
+
+    @PutMapping("/task")
+    @PreAuthorize("hasRole(\"" + AuthoritiesConstants.USER + "\")")
+    public ResponseEntity<TaskDTO> updateTask(@Valid @RequestBody TaskDTO taskDTO) {
+        log.debug("REST request to update Task : {}", taskDTO);
+       
+        Optional<TaskDTO> updatedTask = taskService.updateTask(taskDTO);
+
+        return ResponseUtil.wrapOrNotFound(updatedTask,
+            HeaderUtil.createAlert(applicationName, "userManagement.updated", taskDTO.getNameTask()));
+    }
  
 }

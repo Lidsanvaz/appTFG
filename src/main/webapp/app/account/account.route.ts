@@ -25,7 +25,7 @@ const ACCOUNT_ROUTES = [
   addUserChildRoute,
   addTaskRoute,
   addPeriodicTaskRoute,
-  ...userTaskRoute
+  userTaskRoute
 ];
 
 export const accountState: Routes = [
