@@ -33,7 +33,7 @@
     "hammerjs": "^2.0.8",
     "mdb-calendar": "file:mdb-calendar-8.2.0.tgz",
     "mdb-file-upload": "file:mdb-file-upload-8.2.0.tgz",
-    "moment": "2.24.0",
+    "moment": "2.29.2",
     "ng-jhipster": "0.9.3",
     "ngx-cookie": "4.0.2",
     "ngx-infinite-scroll": "7.1.0",
